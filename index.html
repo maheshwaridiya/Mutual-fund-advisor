@@ -3,1510 +3,1986 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FundWise — Smart Mutual Fund Advisor</title>
+  <title>FundWise Live — Real-Time Mutual Fund & Equity Intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    /* ========================================
-       FundWise — Complete Styles
-       ======================================== */
+    /* ==========================================================================
+       FundWise Live — Soft Pastel Editorial Daylight Design System
+       ========================================================================== */
     :root {
-      --bg-primary: #0a0e1a;
-      --bg-secondary: #111827;
-      --bg-card: rgba(17, 24, 39, 0.8);
-      --bg-card-hover: rgba(30, 41, 59, 0.9);
-      --bg-glass: rgba(255, 255, 255, 0.03);
-      --border-color: rgba(255, 255, 255, 0.08);
-      --border-active: rgba(99, 102, 241, 0.6);
-      --text-primary: #f1f5f9;
-      --text-secondary: #94a3b8;
-      --text-muted: #64748b;
-      --accent-primary: #6366f1;
-      --accent-secondary: #8b5cf6;
-      --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a855f7);
-      --success: #22c55e;
-      --warning: #f59e0b;
-      --danger: #ef4444;
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --radius-xl: 24px;
-      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --bg-cream: #FAF7F2;
+      --bg-surface: rgba(255, 255, 255, 0.88);
+      --bg-surface-solid: #FFFFFF;
+      --bg-subtle: #F3EFEA;
+
+      /* Pastel Palette */
+      --pastel-sage: #D8F3DC;
+      --pastel-sage-strong: #2D6A4F;
+      --pastel-sage-border: #B7E4C7;
+
+      --pastel-lavender: #EDE9FE;
+      --pastel-lavender-strong: #5B21B6;
+      --pastel-lavender-border: #DDD6FE;
+
+      --pastel-peach: #FFE5D9;
+      --pastel-peach-strong: #9A3412;
+      --pastel-peach-border: #FEC89A;
+
+      --pastel-sky: #E0F2FE;
+      --pastel-sky-strong: #075985;
+      --pastel-sky-border: #BAE6FD;
+
+      --pastel-butter: #FEF3C7;
+      --pastel-butter-strong: #92400E;
+      --pastel-butter-border: #FDE68A;
+
+      --pastel-rose: #FCE7F3;
+      --pastel-rose-strong: #9D174D;
+      --pastel-rose-border: #FBCFE8;
+
+      /* Typography & Ink */
+      --ink-primary: #1E293B;
+      --ink-secondary: #475569;
+      --ink-muted: #64748B;
+      --border-soft: rgba(30, 41, 59, 0.09);
+      --border-hover: rgba(91, 33, 182, 0.35);
+
+      /* Brand & Status */
+      --brand-primary: #5B21B6;
+      --brand-secondary: #2D6A4F;
+      --brand-gradient: linear-gradient(135deg, #EDE9FE 0%, #D8F3DC 50%, #FFE5D9 100%);
+      --brand-btn-gradient: linear-gradient(135deg, #5B21B6, #4338CA);
+      --positive: #15803D;
+      --positive-bg: #DCFCE7;
+      --negative: #B91C1C;
+      --negative-bg: #FEE2E2;
+      --warning: #B45309;
+      --warning-bg: #FEF3C7;
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 22px;
+      --radius-xl: 30px;
+      --shadow-soft: 0 10px 30px -10px rgba(30, 41, 59, 0.07);
+      --shadow-hover: 0 18px 40px -12px rgba(91, 33, 182, 0.13);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg-primary);
-      color: var(--text-primary);
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--ink-primary);
       line-height: 1.6;
       min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
     }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: var(--bg-secondary); }
-    ::-webkit-scrollbar-thumb { background: var(--accent-primary); border-radius: 4px; }
+
+    /* Ambient Pastel Aurora Blobs */
+    .pastel-ambient {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: 0.65;
+    }
+    .blob-1 { width: 550px; height: 550px; background: var(--pastel-lavender); top: -120px; right: -80px; }
+    .blob-2 { width: 500px; height: 500px; background: var(--pastel-sage); bottom: -100px; left: -100px; }
+    .blob-3 { width: 420px; height: 420px; background: var(--pastel-peach); top: 38%; left: 42%; }
+    .blob-4 { width: 360px; height: 360px; background: var(--pastel-sky); top: 15%; left: 8%; }
+
     .hidden { display: none !important; }
-    .gradient-text {
-      background: var(--accent-gradient);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .serif-title { font-family: 'Fraunces', Georgia, serif; font-weight: 700; letter-spacing: -0.02em; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
 
-    /* ---- Hero ---- */
-    .hero { position: relative; min-height: 100vh; padding: 0 2rem; overflow: hidden; }
-    .hero-bg-shapes { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-    .shape { position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.15; animation: float 20s ease-in-out infinite; }
-    .shape-1 { width: 600px; height: 600px; background: #6366f1; top: -200px; right: -100px; }
-    .shape-2 { width: 500px; height: 500px; background: #a855f7; bottom: -150px; left: -100px; animation-delay: -7s; }
-    .shape-3 { width: 400px; height: 400px; background: #22c55e; top: 50%; left: 50%; animation-delay: -14s; }
-    @keyframes float {
-      0%,100%{transform:translate(0,0) scale(1)}
-      25%{transform:translate(50px,-30px) scale(1.05)}
-      50%{transform:translate(-20px,40px) scale(0.95)}
-      75%{transform:translate(30px,20px) scale(1.03)}
-    }
-
-    /* Navbar */
-    .navbar { position:relative; z-index:10; display:flex; justify-content:space-between; align-items:center; padding:1.5rem 2rem; max-width:1200px; margin:0 auto; }
-    .logo { display:flex; align-items:center; gap:0.75rem; font-size:1.5rem; font-weight:800; }
-    .logo i { color:var(--accent-primary); font-size:1.75rem; }
-    .nav-links { display:flex; align-items:center; gap:2rem; }
-    .nav-links a { color:var(--text-secondary); text-decoration:none; font-weight:500; transition:var(--transition); }
-    .nav-links a:hover { color:var(--text-primary); }
-    .btn-nav { background:var(--accent-gradient)!important; color:white!important; padding:0.6rem 1.5rem; border-radius:var(--radius-sm); font-weight:600; }
-
-    /* Hero Content */
-    .hero-content { position:relative; z-index:10; text-align:center; max-width:800px; margin:4rem auto; }
-    .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); color:var(--accent-primary); padding:0.5rem 1.25rem; border-radius:50px; font-size:0.85rem; font-weight:600; margin-bottom:1.5rem; animation:fadeInDown 0.6s ease; }
-    .hero-content h1 { font-size:clamp(2.5rem,6vw,4rem); font-weight:900; line-height:1.15; margin-bottom:1.25rem; animation:fadeInUp 0.8s ease; }
-    .hero-subtitle { font-size:1.15rem; color:var(--text-secondary); max-width:600px; margin:0 auto 2.5rem; animation:fadeInUp 1s ease; }
-    .hero-stats { display:flex; justify-content:center; gap:3rem; margin-top:3rem; animation:fadeInUp 1.2s ease; }
-    .stat { display:flex; flex-direction:column; align-items:center; }
-    .stat-number { font-size:2rem; font-weight:800; background:var(--accent-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .stat-label { font-size:0.85rem; color:var(--text-muted); margin-top:0.25rem; }
-
-    /* Buttons */
-    .btn-primary { background:var(--accent-gradient); color:white; border:none; padding:0.85rem 2rem; border-radius:var(--radius-sm); font-size:1rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; transition:var(--transition); font-family:inherit; }
-    .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(99,102,241,0.4); }
-    .btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; box-shadow:none; }
-    .btn-secondary { background:var(--bg-card); color:var(--text-secondary); border:1px solid var(--border-color); padding:0.85rem 2rem; border-radius:var(--radius-sm); font-size:1rem; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; transition:var(--transition); font-family:inherit; }
-    .btn-secondary:hover:not(:disabled) { background:var(--bg-card-hover); color:var(--text-primary); }
-    .btn-secondary:disabled { opacity:0.3; cursor:not-allowed; }
-    .btn-large { padding:1rem 2.5rem; font-size:1.1rem; border-radius:var(--radius-md); }
-    .btn-back { background:transparent; border:1px solid var(--border-color); color:var(--text-secondary); padding:0.5rem 1.25rem; border-radius:var(--radius-sm); font-size:0.9rem; cursor:pointer; display:inline-flex; align-items:center; gap:0.5rem; transition:var(--transition); font-family:inherit; }
-    .btn-back:hover { color:var(--text-primary); border-color:var(--text-muted); }
-
-    /* How It Works */
-    .how-it-works { position:relative; z-index:10; max-width:1000px; margin:2rem auto 4rem; text-align:center; }
-    .how-it-works h2 { font-size:1.75rem; font-weight:700; margin-bottom:2rem; }
-    .steps-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.5rem; }
-    .step-card { background:var(--bg-glass); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:2rem; transition:var(--transition); }
-    .step-card:hover { border-color:var(--accent-primary); transform:translateY(-4px); box-shadow:0 0 30px rgba(99,102,241,0.15); }
-    .step-icon { width:60px; height:60px; background:rgba(99,102,241,0.1); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-size:1.5rem; color:var(--accent-primary); }
-    .step-card h3 { font-size:1.1rem; margin-bottom:0.5rem; }
-    .step-card p { font-size:0.9rem; color:var(--text-secondary); }
-
-    /* ---- Advisor / Wizard ---- */
-    .advisor { min-height:100vh; padding:2rem; background:var(--bg-primary); }
-    .advisor-container { max-width:900px; margin:0 auto; }
-    .progress-bar-container { margin-bottom:3rem; }
-    .progress-bar { height:4px; background:var(--bg-card); border-radius:2px; overflow:hidden; margin-bottom:1rem; }
-    .progress-fill { height:100%; background:var(--accent-gradient); border-radius:2px; transition:width 0.5s cubic-bezier(0.4,0,0.2,1); }
-    .progress-steps { display:flex; justify-content:space-between; }
-    .progress-step { display:flex; align-items:center; gap:0.4rem; font-size:0.7rem; color:var(--text-muted); transition:var(--transition); }
-    .progress-step.active { color:var(--accent-primary); font-weight:600; }
-    .progress-step.completed { color:var(--success); }
-    .progress-step-dot { width:8px; height:8px; border-radius:50%; background:var(--text-muted); transition:var(--transition); }
-    .progress-step.active .progress-step-dot { background:var(--accent-primary); box-shadow:0 0 8px var(--accent-primary); }
-    .progress-step.completed .progress-step-dot { background:var(--success); }
-
-    .wizard-step { animation:fadeInUp 0.4s ease; }
-    .step-header { margin-bottom:2rem; }
-    .step-number { display:inline-block; font-family:'JetBrains Mono',monospace; font-size:0.85rem; font-weight:500; color:var(--accent-primary); background:rgba(99,102,241,0.1); padding:0.25rem 0.75rem; border-radius:50px; margin-bottom:0.75rem; }
-    .step-header h2 { font-size:1.75rem; font-weight:700; margin-bottom:0.5rem; }
-    .step-header p { color:var(--text-secondary); font-size:1rem; }
-
-    /* Sub-section titles inside steps */
-    .sub-section { margin-bottom: 0.5rem; }
-    .sub-title { font-size: 1rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
-
-    /* ---- Option Cards ---- */
-    .options-grid { display:grid; gap:1rem; }
-    .options-grid.cols-2 { grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
-    .options-grid.cols-3 { grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); }
-    .option-card { position:relative; cursor:pointer; transition:var(--transition); }
-    .option-card input[type="radio"],
-    .option-card input[type="checkbox"] { position:absolute; opacity:0; pointer-events:none; }
-    .option-content { background:var(--bg-card); border:2px solid var(--border-color); border-radius:var(--radius-lg); padding:1.5rem; height:100%; transition:var(--transition); }
-    .option-card:hover .option-content { border-color:rgba(99,102,241,0.3); background:var(--bg-card-hover); transform:translateY(-2px); }
-    .option-card input:checked + .option-content { border-color:var(--accent-primary); background:rgba(99,102,241,0.08); box-shadow:0 0 20px rgba(99,102,241,0.15); }
-    .option-card input:checked + .option-content::after { content:'✓'; position:absolute; top:12px; right:12px; width:24px; height:24px; background:var(--accent-primary); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.75rem; color:white; font-weight:700; }
-    .option-icon { font-size:2rem; margin-bottom:0.75rem; }
-    .option-content h3 { font-size:1.1rem; font-weight:700; margin-bottom:0.4rem; }
-    .option-content p { font-size:0.85rem; color:var(--text-secondary); line-height:1.5; }
-
-    .risk-meter { height:4px; background:rgba(255,255,255,0.1); border-radius:2px; margin-top:0.75rem; overflow:hidden; }
-    .risk-fill { height:100%; border-radius:2px; transition:var(--transition); }
-    .tag { display:inline-block; background:rgba(99,102,241,0.15); color:var(--accent-primary); padding:0.25rem 0.75rem; border-radius:50px; font-size:0.75rem; font-weight:600; margin-top:0.75rem; }
-
-    /* Amount Toggle */
-    .amount-toggle { display:flex; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-sm); width:fit-content; margin-bottom:1.5rem; overflow:hidden; }
-    .toggle-btn { background:transparent; border:none; color:var(--text-secondary); padding:0.6rem 1.5rem; font-weight:600; cursor:pointer; transition:var(--transition); font-family:inherit; font-size:0.9rem; }
-    .toggle-btn.active { background:var(--accent-primary); color:white; }
-
-    /* Market Detection */
-    .market-detection { margin-bottom:2rem; }
-    .auto-detect-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); overflow:hidden; }
-    .detect-header { display:flex; align-items:center; gap:0.75rem; padding:1rem 1.5rem; background:rgba(99,102,241,0.05); border-bottom:1px solid var(--border-color); font-weight:600; font-size:0.9rem; color:var(--accent-primary); }
-    .detect-body { padding:1.5rem; }
-    .market-indicators { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; }
-    .market-indicator { display:flex; flex-direction:column; gap:0.25rem; }
-    .indicator-label { font-size:0.8rem; color:var(--text-muted); }
-    .indicator-value { font-size:1.1rem; font-weight:700; }
-    .indicator-change { font-size:0.85rem; font-weight:600; }
-    .indicator-change.positive { color:var(--success); }
-    .indicator-change.negative { color:var(--danger); }
-    .market-sentiment-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.5rem 1rem; border-radius:50px; font-weight:700; font-size:0.9rem; margin-top:1rem; }
-    .market-sentiment-badge.bullish { background:rgba(34,197,94,0.15); color:var(--success); border:1px solid rgba(34,197,94,0.3); }
-    .market-sentiment-badge.neutral { background:rgba(245,158,11,0.15); color:var(--warning); border:1px solid rgba(245,158,11,0.3); }
-    .market-sentiment-badge.bearish { background:rgba(239,68,68,0.15); color:var(--danger); border:1px solid rgba(239,68,68,0.3); }
-    .override-section { margin-top:1rem; }
-    .override-section h3 { font-size:1rem; font-weight:600; color:var(--text-secondary); margin-bottom:1rem; display:flex; align-items:center; gap:0.5rem; }
-
-    /* Spinner */
-    .loading-spinner { display:flex; align-items:center; gap:1rem; color:var(--text-secondary); }
-    .spinner { width:24px; height:24px; border:3px solid var(--border-color); border-top-color:var(--accent-primary); border-radius:50%; animation:spin 1s linear infinite; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-
-    /* Wizard Nav */
-    .wizard-nav { display:flex; justify-content:space-between; margin-top:2.5rem; padding-top:1.5rem; border-top:1px solid var(--border-color); }
-
-    /* ---- Results ---- */
-    .results { min-height:100vh; padding:2rem; background:var(--bg-primary); }
-    .results-container { max-width:1100px; margin:0 auto; }
-    .results-header { margin-bottom:2rem; }
-    .results-header h2 { font-size:1.75rem; font-weight:700; margin:1rem 0 0.5rem; }
-    .results-subtitle { color:var(--text-secondary); }
-    .profile-summary { display:flex; flex-wrap:wrap; gap:0.75rem; margin-bottom:2rem; padding:1.25rem; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); }
-    .profile-tag { display:inline-flex; align-items:center; gap:0.4rem; padding:0.35rem 0.85rem; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:50px; font-size:0.8rem; font-weight:500; color:var(--text-primary); }
-    .profile-tag i { color:var(--accent-primary); font-size:0.75rem; }
-    .results-loading { text-align:center; padding:4rem 2rem; }
-    .analysis-animation { position:relative; width:100px; height:100px; margin:0 auto 2rem; }
-    .analysis-ring { position:absolute; inset:0; border:3px solid var(--border-color); border-top-color:var(--accent-primary); border-right-color:var(--accent-secondary); border-radius:50%; animation:spin 1.5s linear infinite; }
-    .analysis-icon { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:2rem; color:var(--accent-primary); animation:pulse 2s ease-in-out infinite; }
-    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.1);opacity:0.8} }
-
-    /* Fund Cards */
-    .results-grid { display:grid; gap:1.5rem; }
-    .fund-card { background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-xl); overflow:hidden; transition:var(--transition); animation:fadeInUp 0.5s ease forwards; opacity:0; }
-    .fund-card:hover { border-color:rgba(99,102,241,0.3); box-shadow:0 0 30px rgba(99,102,241,0.15); transform:translateY(-2px); }
-    .fund-card-header { display:flex; justify-content:space-between; align-items:flex-start; padding:1.5rem 1.5rem 1rem; }
-    .fund-rank { display:flex; align-items:center; gap:1rem; }
-    .rank-badge { width:48px; height:48px; border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; font-weight:900; font-size:1.25rem; flex-shrink:0; }
-    .rank-1 { background:linear-gradient(135deg,#fbbf24,#f59e0b); color:#1a1a1a; }
-    .rank-2 { background:linear-gradient(135deg,#94a3b8,#64748b); color:white; }
-    .rank-3 { background:linear-gradient(135deg,#d97706,#b45309); color:white; }
-    .rank-other { background:rgba(99,102,241,0.15); color:var(--accent-primary); }
-    .fund-info h3 { font-size:1.15rem; font-weight:700; margin-bottom:0.2rem; }
-    .fund-category { font-size:0.8rem; color:var(--text-muted); }
-    .fund-market-badge { font-size:0.7rem; padding:0.15rem 0.5rem; border-radius:50px; font-weight:600; margin-left:0.5rem; }
-    .fund-market-badge.india { background:rgba(255,153,51,0.15); color:#ff9933; border:1px solid rgba(255,153,51,0.25); }
-    .fund-market-badge.us { background:rgba(59,130,246,0.15); color:#3b82f6; border:1px solid rgba(59,130,246,0.25); }
-    .fund-score-container { text-align:right; flex-shrink:0; }
-    .fund-score { font-size:2rem; font-weight:900; background:var(--accent-gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1; }
-    .fund-score-label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
-
-    .fund-card-body { padding:0 1.5rem; }
-    .fund-metrics { display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:1rem; padding:1rem 0; border-top:1px solid var(--border-color); }
-    .metric { display:flex; flex-direction:column; gap:0.15rem; }
-    .metric-label { font-size:0.7rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px; }
-    .metric-value { font-size:1.05rem; font-weight:700; }
-    .metric-value.positive { color:var(--success); }
-    .metric-value.negative { color:var(--danger); }
-
-    .fund-card-footer { padding:1rem 1.5rem 1.5rem; }
-    .fund-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1rem; }
-    .fund-tag { display:inline-flex; align-items:center; gap:0.3rem; padding:0.25rem 0.65rem; border-radius:50px; font-size:0.7rem; font-weight:600; }
-    .fund-tag.match { background:rgba(34,197,94,0.12); color:var(--success); border:1px solid rgba(34,197,94,0.25); }
-    .fund-tag.info { background:rgba(99,102,241,0.12); color:var(--accent-primary); border:1px solid rgba(99,102,241,0.25); }
-    .fund-tag.warn { background:rgba(245,158,11,0.12); color:var(--warning); border:1px solid rgba(245,158,11,0.25); }
-
-    .fund-why { background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.1); border-radius:var(--radius-md); padding:1rem; }
-    .fund-why-title { font-size:0.8rem; font-weight:700; color:var(--accent-primary); margin-bottom:0.4rem; display:flex; align-items:center; gap:0.4rem; }
-    .fund-why p { font-size:0.85rem; color:var(--text-secondary); line-height:1.6; }
-
-    /* Star rating */
-    .star-rating { display:inline-flex; gap:2px; }
-    .star-rating .star { color:#fbbf24; font-size:0.85rem; }
-    .star-rating .star.empty { color:var(--text-muted); opacity:0.3; }
-
-    /* Score Breakdown */
-    .score-breakdown { padding:0 1.5rem 1rem; }
-    .score-bars { display:grid; gap:0.5rem; }
-    .score-bar-item { display:grid; grid-template-columns:120px 1fr 40px; align-items:center; gap:0.75rem; }
-    .score-bar-label { font-size:0.75rem; color:var(--text-muted); }
-    .score-bar-track { height:6px; background:rgba(255,255,255,0.05); border-radius:3px; overflow:hidden; }
-    .score-bar-fill { height:100%; border-radius:3px; background:var(--accent-gradient); transition:width 1s ease; }
-    .score-bar-value { font-size:0.75rem; font-weight:700; color:var(--text-secondary); text-align:right; }
-
-    /* Disclaimer */
-    .disclaimer { display:flex; gap:0.75rem; padding:1.25rem; background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.15); border-radius:var(--radius-md); margin-top:2rem; }
-    .disclaimer i { color:var(--warning); margin-top:0.2rem; flex-shrink:0; }
-    .disclaimer p { font-size:0.8rem; color:var(--text-secondary); line-height:1.6; }
-
-    /* Footer */
-    .footer { padding:3rem 2rem; text-align:center; border-top:1px solid var(--border-color); background:var(--bg-secondary); }
-    .footer-brand { font-size:1.25rem; font-weight:800; margin-bottom:0.5rem; }
-    .footer-brand i { color:var(--accent-primary); }
-    .footer p { color:var(--text-secondary); font-size:0.85rem; }
-    .footer-disclaimer { color:var(--text-muted)!important; font-size:0.75rem!important; margin-top:0.5rem; }
-
-    /* Animations */
-    @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)}
-      25%{transform:translateX(-8px)}
-      50%{transform:translateX(8px)}
-      75%{transform:translateX(-4px)}
-    }
-
-    /* Tax Info Styles */
-    .tax-info {
-      margin: 0 1.5rem;
-      padding: 1rem;
-      background: rgba(99,102,241,0.03);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      margin-bottom: 1rem;
-    }
-    .tax-info.tax-highlight {
-      border-color: rgba(34,197,94,0.3);
-      background: rgba(34,197,94,0.03);
-    }
-    .tax-header {
+    /* ---- Live Market Ticker Strip ---- */
+    .live-ticker-bar {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 0.55rem 1.5rem;
       font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .ticker-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
       font-weight: 700;
-      color: var(--accent-primary);
-      margin-bottom: 0.75rem;
+      color: var(--pastel-sage-strong);
+      background: var(--pastel-sage);
+      padding: 0.2rem 0.7rem;
+      border-radius: 50px;
+      font-size: 0.74rem;
+    }
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: #16A34A;
+      border-radius: 50%;
+      animation: pulseDot 1.8s infinite;
+    }
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.35); opacity: 0.5; }
+    }
+    .ticker-items {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      white-space: nowrap;
+      font-size: 0.78rem;
+    }
+    .ticker-name { font-weight: 700; color: var(--ink-secondary); }
+    .ticker-val { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+    .ticker-chg {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      padding: 0.1rem 0.4rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+    }
+    .ticker-chg.up { background: var(--positive-bg); color: var(--positive); }
+    .ticker-chg.down { background: var(--negative-bg); color: var(--negative); }
+
+    /* ---- Navigation ---- */
+    .navbar {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink-primary);
+      cursor: pointer;
+    }
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--pastel-lavender);
+      border: 1px solid var(--pastel-lavender-border);
+      color: var(--pastel-lavender-strong);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .brand-text { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; }
+    .brand-badge {
+      font-size: 0.68rem;
+      font-weight: 700;
+      background: var(--pastel-peach);
+      color: var(--pastel-peach-strong);
+      padding: 0.15rem 0.55rem;
+      border-radius: 50px;
+      border: 1px solid var(--pastel-peach-border);
+      vertical-align: middle;
+      margin-left: 0.35rem;
+    }
+
+    .nav-pills {
+      display: flex;
+      background: var(--bg-surface);
+      padding: 0.35rem;
+      border-radius: 50px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      gap: 0.25rem;
+    }
+    .nav-pill {
+      border: none;
+      background: transparent;
+      color: var(--ink-secondary);
+      padding: 0.55rem 1.15rem;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .nav-pill:hover { color: var(--ink-primary); background: var(--bg-subtle); }
+    .nav-pill.active {
+      background: var(--pastel-lavender);
+      color: var(--pastel-lavender-strong);
+      font-weight: 700;
+    }
+
+    /* ---- Buttons ---- */
+    .btn-primary {
+      background: var(--brand-btn-gradient);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.85rem 1.75rem;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      transition: var(--transition);
+      box-shadow: 0 8px 20px -6px rgba(91, 33, 182, 0.35);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 26px -6px rgba(91, 33, 182, 0.45); }
+    .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+
+    .btn-pastel {
+      background: var(--pastel-sage);
+      color: var(--pastel-sage-strong);
+      border: 1px solid var(--pastel-sage-border);
+      padding: 0.85rem 1.65rem;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+    .btn-pastel:hover { transform: translateY(-2px); filter: brightness(0.97); }
+
+    .btn-secondary {
+      background: var(--bg-surface-solid);
+      color: var(--ink-secondary);
+      border: 1px solid var(--border-soft);
+      padding: 0.75rem 1.4rem;
+      border-radius: 50px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: var(--transition);
+    }
+    .btn-secondary:hover:not(:disabled) { border-color: var(--ink-muted); color: var(--ink-primary); }
+    .btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ---- Hero & Universal Search Section ---- */
+    .container { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem 4rem; }
+
+    .hero-card {
+      background: var(--bg-surface);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2.5rem;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--pastel-sky);
+      color: var(--pastel-sky-strong);
+      border: 1px solid var(--pastel-sky-border);
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .hero-card h1 {
+      font-size: clamp(2.1rem, 4.8vw, 3.35rem);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      color: var(--ink-primary);
+    }
+    .hero-highlight {
+      background: linear-gradient(120deg, var(--pastel-lavender) 0%, var(--pastel-peach) 100%);
+      padding: 0 0.45rem;
+      border-radius: 12px;
+      color: var(--brand-primary);
+    }
+    .hero-sub {
+      max-width: 680px;
+      margin: 0 auto 2rem;
+      color: var(--ink-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Quick Search Box inside Hero / Explorer */
+    .universal-search-box {
+      max-width: 760px;
+      margin: 0 auto 1.75rem;
+      background: var(--bg-surface-solid);
+      border: 2px solid var(--pastel-lavender-border);
+      border-radius: 20px;
+      padding: 0.5rem 0.6rem 0.5rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: var(--shadow-hover);
+      transition: var(--transition);
+    }
+    .universal-search-box:focus-within {
+      border-color: var(--brand-primary);
+    }
+    .universal-search-box i { color: var(--brand-primary); font-size: 1.1rem; }
+    .universal-search-box input {
+      flex: 1;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 0.98rem;
+      color: var(--ink-primary);
+      background: transparent;
+      min-width: 140px;
+    }
+    .search-scope-select {
+      border: 1px solid var(--border-soft);
+      background: var(--bg-subtle);
+      color: var(--ink-primary);
+      padding: 0.55rem 0.85rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .quick-chip {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-surface-solid);
+      color: var(--ink-secondary);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .quick-chip:hover {
+      background: var(--pastel-lavender);
+      color: var(--pastel-lavender-strong);
+      border-color: var(--pastel-lavender-border);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* Pastel Bento Feature Strip */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .bento-card {
+      padding: 1.6rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      text-align: left;
+      transition: var(--transition);
+    }
+    .bento-card.sage { background: var(--pastel-sage); border-color: var(--pastel-sage-border); }
+    .bento-card.lavender { background: var(--pastel-lavender); border-color: var(--pastel-lavender-border); }
+    .bento-card.peach { background: var(--pastel-peach); border-color: var(--pastel-peach-border); }
+    .bento-card.sky { background: var(--pastel-sky); border-color: var(--pastel-sky-border); }
+    .bento-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: var(--ink-primary);
+    }
+    .bento-card h3 { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.35rem; }
+    .bento-card p { font-size: 0.86rem; color: var(--ink-secondary); }
+
+    /* ---- Live Search Results Container ---- */
+    .search-results-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    /* ---- 8-Step Advisor Wizard ---- */
+    .wizard-shell {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-soft);
+    }
+    .progress-bar-wrap { margin-bottom: 2.25rem; }
+    .progress-track {
+      height: 8px;
+      background: var(--bg-subtle);
+      border-radius: 50px;
+      overflow: hidden;
+      margin-bottom: 0.85rem;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #8B5CF6, #10B981, #F59E0B);
+      border-radius: 50px;
+      transition: width 0.4s ease;
+    }
+    .progress-steps {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .progress-step {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .progress-step.active { color: var(--brand-primary); font-weight: 800; }
+    .progress-step.completed { color: var(--pastel-sage-strong); }
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #CBD5E1;
+    }
+    .progress-step.active .step-dot { background: var(--brand-primary); transform: scale(1.25); }
+    .progress-step.completed .step-dot { background: var(--pastel-sage-strong); }
+
+    .step-badge {
+      display: inline-block;
+      background: var(--pastel-lavender);
+      color: var(--pastel-lavender-strong);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.25rem 0.8rem;
+      border-radius: 50px;
+      margin-bottom: 0.6rem;
+    }
+    .step-header h2 { font-size: 1.75rem; margin-bottom: 0.35rem; }
+    .step-header p { color: var(--ink-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+    .options-grid { display: grid; gap: 1rem; }
+    .options-grid.cols-2 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+    .options-grid.cols-3 { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+
+    .option-card { position: relative; cursor: pointer; }
+    .option-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .option-content {
+      background: var(--bg-surface-solid);
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 1.35rem;
+      height: 100%;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .option-card:hover .option-content {
+      border-color: var(--pastel-lavender-border);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft);
+    }
+    .option-card input:checked + .option-content {
+      background: var(--pastel-lavender);
+      border-color: var(--brand-primary);
+      box-shadow: 0 8px 24px -8px rgba(91, 33, 182, 0.22);
+    }
+    .option-card input:checked + .option-content::after {
+      content: '✓';
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--brand-primary);
+      color: #FFF;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .option-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--bg-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 0.35rem;
+    }
+    .option-content h3 { font-size: 1.02rem; font-weight: 800; color: var(--ink-primary); }
+    .option-content p { font-size: 0.83rem; color: var(--ink-secondary); }
+
+    .custom-keyword-box {
+      margin-top: 1.5rem;
+      padding: 1.15rem 1.35rem;
+      background: var(--pastel-butter);
+      border: 1px solid var(--pastel-butter-border);
+      border-radius: var(--radius-md);
+    }
+    .custom-keyword-box label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--pastel-butter-strong);
+      margin-bottom: 0.45rem;
+    }
+    .custom-keyword-box input {
+      width: 100%;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      border: 1px solid rgba(146, 64, 14, 0.25);
+      background: #FFF;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .wizard-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.25rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    /* ---- Instrument / Fund Cards ---- */
+    .results-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    .fund-card {
+      background: var(--bg-surface-solid);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      box-shadow: var(--shadow-soft);
+      transition: var(--transition);
+    }
+    .fund-card:hover {
+      border-color: var(--border-hover);
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+    .fund-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .fund-title-group { display: flex; gap: 1rem; align-items: flex-start; }
+    .rank-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      background: var(--pastel-lavender);
+      color: var(--pastel-lavender-strong);
+      border: 1px solid var(--pastel-lavender-border);
+    }
+    .rank-1 { background: var(--pastel-butter); color: var(--pastel-butter-strong); border-color: var(--pastel-butter-border); }
+    .rank-2 { background: var(--pastel-sage); color: var(--pastel-sage-strong); border-color: var(--pastel-sage-border); }
+    .rank-3 { background: var(--pastel-peach); color: var(--pastel-peach-strong); border-color: var(--pastel-peach-border); }
+
+    .fund-title-group h3 { font-size: 1.15rem; font-weight: 800; line-height: 1.3; margin-bottom: 0.3rem; }
+    .meta-badges { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .badge-sage { background: var(--pastel-sage); color: var(--pastel-sage-strong); }
+    .badge-lavender { background: var(--pastel-lavender); color: var(--pastel-lavender-strong); }
+    .badge-peach { background: var(--pastel-peach); color: var(--pastel-peach-strong); }
+    .badge-sky { background: var(--pastel-sky); color: var(--pastel-sky-strong); }
+    .badge-butter { background: var(--pastel-butter); color: var(--pastel-butter-strong); }
+    .badge-rose { background: var(--pastel-rose); color: var(--pastel-rose-strong); }
+
+    .score-pill {
+      text-align: right;
+      background: var(--pastel-sage);
+      border: 1px solid var(--pastel-sage-border);
+      padding: 0.55rem 1rem;
+      border-radius: 16px;
+      flex-shrink: 0;
+    }
+    .score-num { font-family: 'JetBrains Mono', monospace; font-size: 1.45rem; font-weight: 800; color: var(--pastel-sage-strong); line-height: 1; }
+    .score-lbl { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; color: var(--pastel-sage-strong); letter-spacing: 0.04em; }
+
+    /* Metrics Strip */
+    .metrics-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+      gap: 0.85rem;
+      padding: 1.1rem;
+      background: var(--bg-cream);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-soft);
+      margin-bottom: 1.15rem;
+    }
+    .metric-box { display: flex; flex-direction: column; gap: 0.15rem; }
+    .metric-lbl { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--ink-muted); letter-spacing: 0.03em; }
+    .metric-val { font-family: 'JetBrains Mono', monospace; font-size: 1.02rem; font-weight: 700; color: var(--ink-primary); }
+    .metric-val.pos { color: var(--positive); }
+    .metric-val.neg { color: var(--negative); }
+    .metric-sub { font-size: 0.68rem; color: var(--ink-muted); }
+
+    /* Tax & Why Section */
+    .card-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+    }
+    .info-box {
+      padding: 1rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-size: 0.83rem;
+    }
+    .info-box.why-box {
+      background: var(--pastel-sky);
+      border: 1px solid var(--pastel-sky-border);
+      color: var(--ink-primary);
+    }
+    .info-box.tax-box {
+      background: var(--pastel-peach);
+      border: 1px solid var(--pastel-peach-border);
+      color: var(--ink-primary);
+    }
+    .info-box-title {
+      font-weight: 800;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
     }
-    .tax-highlight .tax-header { color: var(--success); }
-    .tax-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 0.6rem;
-    }
-    .tax-item { display: flex; flex-direction: column; gap: 0.1rem; }
-    .tax-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .tax-value {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-secondary);
-    }
-    .tax-value small { font-weight: 400; opacity: 0.8; }
-    .tax-note {
-      color: var(--text-muted);
-      font-weight: 500;
-      font-size: 0.78rem;
-    }
-    .tax-highlight .tax-note { color: var(--success); font-weight: 600; }
 
-    /* Responsive */
-    @media(max-width:768px){
-      .hero{padding:0 1rem} .navbar{padding:1rem}
-      .nav-links a:not(.btn-nav){display:none}
-      .hero-content{margin:2rem auto} .hero-content h1{font-size:2rem}
-      .hero-stats{gap:1.5rem} .stat-number{font-size:1.5rem}
-      .options-grid.cols-2,.options-grid.cols-3{grid-template-columns:1fr}
-      .progress-steps{display:none}
-      .fund-card-header{flex-direction:column;gap:1rem}
-      .fund-score-container{text-align:left}
-      .fund-metrics{grid-template-columns:repeat(2,1fr)}
-      .score-bar-item{grid-template-columns:90px 1fr 35px}
+    .card-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--border-soft);
     }
-    @media(max-width:480px){
-      .hero-content h1{font-size:1.7rem} .hero-subtitle{font-size:1rem}
-      .step-header h2{font-size:1.35rem} .option-content{padding:1rem}
+
+    /* ---- Deep-Dive Research Modal (Chart + SIP Calculator) ---- */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(30, 41, 59, 0.45);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      overflow-y: auto;
+    }
+    .modal-card {
+      background: var(--bg-surface-solid);
+      border-radius: var(--radius-xl);
+      max-width: 940px;
+      width: 100%;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 2.25rem;
+      box-shadow: 0 25px 60px -15px rgba(15, 23, 42, 0.25);
+      border: 1px solid var(--border-soft);
+      position: relative;
+    }
+    .modal-close {
+      position: sticky;
+      top: 0;
+      float: right;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-soft);
+      background: var(--bg-subtle);
+      color: var(--ink-primary);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .chart-box {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .chart-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .range-btn {
+      border: 1px solid var(--border-soft);
+      background: #FFF;
+      padding: 0.3rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .range-btn.active {
+      background: var(--brand-primary);
+      color: #FFF;
+      border-color: var(--brand-primary);
+    }
+
+    .sip-calc-box {
+      background: var(--pastel-sage);
+      border: 1px solid var(--pastel-sage-border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-top: 1.25rem;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+      align-items: center;
+    }
+    .calc-input-group label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pastel-sage-strong);
+      margin-bottom: 0.35rem;
+    }
+    .calc-input-group input[type="number"],
+    .calc-input-group select {
+      width: 100%;
+      padding: 0.6rem 0.85rem;
+      border-radius: 10px;
+      border: 1px solid rgba(45, 106, 79, 0.25);
+      background: #FFF;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    /* Spinner & Live Log */
+    .live-loader {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      background: var(--bg-surface);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+    }
+    .spinner-ring {
+      width: 52px;
+      height: 52px;
+      border: 4px solid var(--pastel-lavender);
+      border-top-color: var(--brand-primary);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+      margin: 0 auto 1.25rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .disclaimer-banner {
+      margin-top: 2.5rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--pastel-butter);
+      border: 1px solid var(--pastel-butter-border);
+      border-radius: var(--radius-md);
+      font-size: 0.82rem;
+      color: var(--pastel-butter-strong);
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--ink-muted);
+      font-size: 0.84rem;
+      border-top: 1px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .hero-card { padding: 2rem 1.25rem; }
+      .wizard-shell { padding: 1.5rem 1.15rem; }
+      .universal-search-box { flex-wrap: wrap; padding: 0.75rem; }
+      .universal-search-box button { width: 100%; justify-content: center; }
+      .fund-card-top { flex-direction: column; }
+      .score-pill { text-align: left; width: fit-content; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ========== HERO ========== -->
-  <section id="hero" class="hero">
-    <div class="hero-bg-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
+  <!-- Pastel Background Blobs -->
+  <div class="pastel-ambient">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- ========== LIVE REAL-TIME BENCHMARK TICKER ========== -->
+  <div class="live-ticker-bar">
+    <div class="ticker-status">
+      <span class="pulse-dot"></span>
+      <span id="liveFeedStatusText">LIVE AMFI & GLOBAL MARKET FEED</span>
     </div>
-    <nav class="navbar">
-      <div class="logo"><i class="fas fa-chart-line"></i><span>FundWise</span></div>
-      <div class="nav-links">
-        <a href="#how-it-works">How It Works</a>
-        <a href="#" onclick="startAdvisor(); return false;" class="btn-nav">Get Started</a>
-      </div>
-    </nav>
-    <div class="hero-content">
-      <div class="hero-badge"><i class="fas fa-sparkles"></i> AI-Powered Fund Selection</div>
-      <h1>Find Your <span class="gradient-text">Perfect</span> Mutual Fund</h1>
-      <p class="hero-subtitle">Answer a few simple questions and get personalized mutual fund recommendations for <strong>Indian</strong> & <strong>US</strong> markets.</p>
-      <button class="btn-primary btn-large" onclick="startAdvisor()"><i class="fas fa-rocket"></i> Start Analysis</button>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-number">150+</span><span class="stat-label">Funds Analyzed</span></div>
-        <div class="stat"><span class="stat-number">8</span><span class="stat-label">Key Factors</span></div>
-        <div class="stat"><span class="stat-number">2</span><span class="stat-label">Markets</span></div>
-      </div>
+    <div class="ticker-items" id="liveTickerStrip">
+      <span class="ticker-item"><span class="ticker-name">Connecting to live benchmark feeds...</span></span>
     </div>
-    <div id="how-it-works" class="how-it-works">
-      <h2>How It Works</h2>
-      <div class="steps-row">
-        <div class="step-card"><div class="step-icon"><i class="fas fa-user-cog"></i></div><h3>1. Tell Us About You</h3><p>Risk appetite, budget, expected returns & preferences.</p></div>
-        <div class="step-card"><div class="step-icon"><i class="fas fa-chart-bar"></i></div><h3>2. Market Analysis</h3><p>We evaluate current market conditions in real-time.</p></div>
-        <div class="step-card"><div class="step-icon"><i class="fas fa-award"></i></div><h3>3. Get Picks</h3><p>Receive scored, personalized fund recommendations.</p></div>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar">
+    <div class="brand-logo" onclick="switchTab('home')">
+      <div class="brand-icon"><i class="fas fa-seedling"></i></div>
+      <div>
+        <span class="brand-text serif-title">FundWise</span>
+        <span class="brand-badge">LIVE API</span>
       </div>
     </div>
-  </section>
 
-  <!-- ========== WIZARD ========== -->
-  <section id="advisor" class="advisor hidden">
-    <div class="advisor-container">
-      <!-- Progress -->
-      <div class="progress-bar-container">
-        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-        <div class="progress-steps" id="progressSteps"></div>
-      </div>
+    <div class="nav-pills">
+      <button class="nav-pill active" id="tabBtn-home" onclick="switchTab('home')">
+        <i class="fas fa-compass"></i> Live Explorer & Search
+      </button>
+      <button class="nav-pill" id="tabBtn-wizard" onclick="switchTab('wizard')">
+        <i class="fas fa-wand-magic-sparkles"></i> 8-Step Smart Advisor
+      </button>
+      <button class="nav-pill" id="tabBtn-pulse" onclick="switchTab('pulse')">
+        <i class="fas fa-chart-line"></i> Market & Tax Guide
+      </button>
+    </div>
+  </nav>
 
-      <!-- STEP 1 — Market -->
-      <div class="wizard-step" data-step="1">
-        <div class="step-header">
-          <span class="step-number">01</span>
-          <h2>Which Market Interests You?</h2>
-          <p>Pick the market you'd like fund recommendations for</p>
-        </div>
-        <div class="options-grid cols-3">
-          <label class="option-card"><input type="radio" name="market" value="india">
-            <div class="option-content"><div class="option-icon">🇮🇳</div><h3>Indian Market</h3><p>NSE/BSE mutual funds</p></div></label>
-          <label class="option-card"><input type="radio" name="market" value="us">
-            <div class="option-content"><div class="option-icon">🇺🇸</div><h3>US Market</h3><p>US mutual funds & ETFs</p></div></label>
-          <label class="option-card"><input type="radio" name="market" value="both">
-            <div class="option-content"><div class="option-icon">🌍</div><h3>Both Markets</h3><p>India + US recommendations</p></div></label>
-        </div>
-      </div>
+  <main class="container">
 
-      <!-- STEP 2 — Risk -->
-      <div class="wizard-step hidden" data-step="2">
-        <div class="step-header">
-          <span class="step-number">02</span>
-          <h2>What's Your Risk Tolerance?</h2>
-          <p>How much volatility can you handle?</p>
+    <!-- =================================================================
+         VIEW 1: HOME & UNIVERSAL LIVE SEARCH EXPLORER
+         ================================================================= -->
+    <section id="view-home">
+      <div class="hero-card">
+        <div class="hero-pill">
+          <i class="fas fa-satellite-dish"></i> 100% Real-Time NAVs, Stock Prices & Historical CAGRs
         </div>
-        <div class="options-grid cols-2">
-          <label class="option-card"><input type="radio" name="risk" value="low">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-shield-alt" style="color:#22c55e"></i></div><h3>Low</h3><p>Capital safety first. Steady returns.</p><div class="risk-meter"><span class="risk-fill" style="width:25%;background:#22c55e"></span></div></div></label>
-          <label class="option-card"><input type="radio" name="risk" value="moderate">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-balance-scale" style="color:#f59e0b"></i></div><h3>Moderate</h3><p>Balanced growth & safety.</p><div class="risk-meter"><span class="risk-fill" style="width:50%;background:#f59e0b"></span></div></div></label>
-          <label class="option-card"><input type="radio" name="risk" value="high">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-fire" style="color:#ef4444"></i></div><h3>High</h3><p>Aggressive growth. OK with swings.</p><div class="risk-meter"><span class="risk-fill" style="width:75%;background:#ef4444"></span></div></div></label>
-          <label class="option-card"><input type="radio" name="risk" value="very-high">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-bolt" style="color:#dc2626"></i></div><h3>Very High</h3><p>Max returns. Large drawdowns OK.</p><div class="risk-meter"><span class="risk-fill" style="width:100%;background:#dc2626"></span></div></div></label>
-        </div>
-      </div>
+        <h1 class="serif-title">
+          Discover Every <span class="hero-highlight">Mutual Fund & Stock</span> in Real Time
+        </h1>
+        <p class="hero-sub">
+          Connected directly to official daily AMFI NAV feeds (37,000+ Indian mutual fund schemes) and global equity markets. Zero hardcoded returns—every CAGR, volatility score, and drawdown is computed live.
+        </p>
 
-      <!-- STEP 3 — Amount -->
-      <div class="wizard-step hidden" data-step="3">
-        <div class="step-header">
-          <span class="step-number">03</span>
-          <h2>How Much Do You Want to Invest?</h2>
-          <p>Select your investment budget range</p>
+        <!-- Universal Real-Time Search Bar -->
+        <div class="universal-search-box">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="universalSearchInput"
+            placeholder="Search any mutual fund, AMC, or stock (e.g., Parag Parikh, HDFC Mid Cap, SBI Small, Reliance, NVDA, Vanguard)..."
+            onkeydown="if(event.key==='Enter') executeUniversalSearch()"
+          >
+          <select id="universalSearchScope" class="search-scope-select">
+            <option value="all">All (India MF + Global Stocks/ETFs)</option>
+            <option value="in-mf">Indian Mutual Funds (AMFI Live)</option>
+            <option value="global-eq">Stocks, ETFs & US Funds (Yahoo Live)</option>
+          </select>
+          <button class="btn-primary" onclick="executeUniversalSearch()">
+            <i class="fas fa-bolt"></i> Search Live
+          </button>
         </div>
-        <div class="amount-toggle">
-          <button class="toggle-btn active" data-currency="inr" onclick="switchCurrency('inr')">₹ INR</button>
-          <button class="toggle-btn" data-currency="usd" onclick="switchCurrency('usd')">$ USD</button>
-        </div>
-        <div class="options-grid cols-3">
-          <label class="option-card"><input type="radio" name="amount" value="micro">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-seedling" style="color:#22c55e"></i></div><h3 class="amount-label" data-inr="₹500 – ₹5,000" data-usd="$50 – $500">₹500 – ₹5,000</h3><p>Great for beginners</p></div></label>
-          <label class="option-card"><input type="radio" name="amount" value="small">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-leaf" style="color:#10b981"></i></div><h3 class="amount-label" data-inr="₹5K – ₹25K" data-usd="$500 – $2,500">₹5K – ₹25K</h3><p>Good diversification</p></div></label>
-          <label class="option-card"><input type="radio" name="amount" value="medium">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-tree" style="color:#0ea5e9"></i></div><h3 class="amount-label" data-inr="₹25K – ₹1 Lakh" data-usd="$2.5K – $10K">₹25K – ₹1 Lakh</h3><p>Wide range of options</p></div></label>
-          <label class="option-card"><input type="radio" name="amount" value="large">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-mountain" style="color:#6366f1"></i></div><h3 class="amount-label" data-inr="₹1L – ₹5 Lakh" data-usd="$10K – $50K">₹1L – ₹5 Lakh</h3><p>Premium fund access</p></div></label>
-          <label class="option-card"><input type="radio" name="amount" value="xlarge">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-gem" style="color:#a855f7"></i></div><h3 class="amount-label" data-inr="₹5 Lakh+" data-usd="$50K+">₹5 Lakh+</h3><p>All doors open</p></div></label>
-        </div>
-      </div>
 
-      <!-- STEP 4 — Expected Returns -->
-      <div class="wizard-step hidden" data-step="4">
-        <div class="step-header">
-          <span class="step-number">04</span>
-          <h2>What Returns Do You Expect?</h2>
-          <p>Set your return expectations and preference</p>
+        <!-- Instant Live Search Chips -->
+        <div class="quick-chips">
+          <span style="font-size:0.78rem;color:var(--ink-muted);align-self:center;margin-right:0.25rem;">Try live query:</span>
+          <button class="quick-chip" onclick="quickSearch('Parag Parikh Flexi Cap', 'in-mf')">Parag Parikh Flexi Cap</button>
+          <button class="quick-chip" onclick="quickSearch('HDFC Mid Cap', 'in-mf')">HDFC Mid Cap</button>
+          <button class="quick-chip" onclick="quickSearch('Nippon India Small Cap', 'in-mf')">Nippon Small Cap</button>
+          <button class="quick-chip" onclick="quickSearch('Motilal Oswal Nasdaq', 'in-mf')">Motilal Nasdaq 100</button>
+          <button class="quick-chip" onclick="quickSearch('UTI Nifty 50 Index', 'in-mf')">UTI Nifty 50 Index</button>
+          <button class="quick-chip" onclick="quickSearch('RELIANCE.NS', 'global-eq')">Reliance Industries (NSE)</button>
+          <button class="quick-chip" onclick="quickSearch('NVDA', 'global-eq')">NVIDIA (NASDAQ)</button>
+          <button class="quick-chip" onclick="quickSearch('VOO', 'global-eq')">Vanguard S&P 500 (VOO)</button>
         </div>
-        <div class="sub-section">
-          <h3 class="sub-title"><i class="fas fa-percentage"></i> Expected Annual Return</h3>
-          <div class="options-grid cols-2">
-            <label class="option-card"><input type="radio" name="returns" value="conservative">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-piggy-bank" style="color:#22c55e"></i></div><h3>6 – 8% p.a.</h3><p>Conservative — beats inflation safely</p></div></label>
-            <label class="option-card"><input type="radio" name="returns" value="moderate">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-chart-line" style="color:#0ea5e9"></i></div><h3>8 – 14% p.a.</h3><p>Moderate — balanced wealth growth</p></div></label>
-            <label class="option-card"><input type="radio" name="returns" value="high">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-rocket" style="color:#f59e0b"></i></div><h3>14 – 20% p.a.</h3><p>High — aggressive wealth building</p></div></label>
-            <label class="option-card"><input type="radio" name="returns" value="very-high">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-fire-flame-curved" style="color:#ef4444"></i></div><h3>20%+ p.a.</h3><p>Very high — maximum growth potential</p></div></label>
+
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="switchTab('wizard')">
+            <i class="fas fa-sliders"></i> Launch 8-Step Personalized Advisor
+          </button>
+          <button class="btn-pastel" onclick="loadLiveCategoryShowcase('Large & Flexi Cap Leaders')">
+            <i class="fas fa-chart-pie"></i> Scan Live Top Performing Funds
+          </button>
+        </div>
+
+        <div class="bento-grid">
+          <div class="bento-card sage">
+            <div class="bento-icon"><i class="fas fa-database"></i></div>
+            <h3>37,000+ Indian Schemes</h3>
+            <p>Direct live connection to AMFI (`api.mfapi.in`) fetching latest NAVs, ISIN codes, and full multi-year NAV histories on demand.</p>
+          </div>
+          <div class="bento-card lavender">
+            <div class="bento-icon"><i class="fas fa-globe"></i></div>
+            <h3>Global Stocks & US ETFs</h3>
+            <p>Search NSE/BSE equities, US stocks, ETFs, and mutual funds with real-time 1Y, 3Y, and 5Y annualized return computation.</p>
+          </div>
+          <div class="bento-card peach">
+            <div class="bento-icon"><i class="fas fa-calculator"></i></div>
+            <h3>Live Math, Zero Guesswork</h3>
+            <p>CAGR, annualized standard deviation (volatility), and maximum drawdown are calculated directly from historical daily closes.</p>
+          </div>
+          <div class="bento-card sky">
+            <div class="bento-icon"><i class="fas fa-scale-balanced"></i></div>
+            <h3>Current Tax Rules</h3>
+            <p>Updated with current Indian STCG (20%), LTCG (12.5% above ₹1.25L), Debt Sec 50AA slab rules, and US capital gains brackets.</p>
           </div>
         </div>
-        <div class="sub-section" style="margin-top:1.5rem">
-          <h3 class="sub-title"><i class="fas fa-calendar-alt"></i> Return Preference</h3>
+      </div>
+
+      <!-- Live Search Results / Live Category Feed -->
+      <div id="universalSearchResultsPanel" class="search-results-panel hidden">
+        <div class="panel-header">
+          <div>
+            <span class="badge badge-lavender" id="searchStatusBadge">LIVE API RESULTS</span>
+            <h2 class="serif-title" id="searchPanelTitle" style="font-size:1.5rem;margin-top:0.35rem;">Live Market Instruments</h2>
+          </div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <button class="btn-secondary" onclick="loadLiveCategoryShowcase('Flexi Cap Direct Growth')">Flexi Cap</button>
+            <button class="btn-secondary" onclick="loadLiveCategoryShowcase('Mid Cap Direct Growth')">Mid Cap</button>
+            <button class="btn-secondary" onclick="loadLiveCategoryShowcase('Small Cap Direct Growth')">Small Cap</button>
+            <button class="btn-secondary" onclick="loadLiveCategoryShowcase('Nifty 50 Index Direct Growth')">Index Funds</button>
+            <button class="btn-secondary" onclick="loadLiveCategoryShowcase('ELSS Tax Saver Direct Growth')">ELSS Tax Saver</button>
+          </div>
+        </div>
+
+        <div id="universalSearchLoader" class="live-loader hidden">
+          <div class="spinner-ring"></div>
+          <h3 id="universalLoaderTitle">Querying Live Financial APIs...</h3>
+          <p id="universalLoaderSub" style="color:var(--ink-secondary);font-size:0.9rem;margin-top:0.35rem;">Fetching official historical series & computing CAGR...</p>
+        </div>
+
+        <div id="universalResultsGrid" class="results-grid"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         VIEW 2: 8-STEP PERSONALIZED SMART ADVISOR WIZARD (LIVE API)
+         ================================================================= -->
+    <section id="view-wizard" class="hidden">
+      <div class="wizard-shell" id="wizardFormBox">
+        <div class="progress-bar-wrap">
+          <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:12.5%"></div></div>
+          <div class="progress-steps" id="progressSteps"></div>
+        </div>
+
+        <!-- STEP 1: Market Universe -->
+        <div class="wizard-step" data-step="1">
+          <div class="step-header">
+            <span class="step-badge">STEP 01 OF 08</span>
+            <h2 class="serif-title">Which Market Universe Should We Scan Live?</h2>
+            <p>Select the real-time market feed you want our engine to query and score.</p>
+          </div>
           <div class="options-grid cols-3">
-            <label class="option-card"><input type="radio" name="returnType" value="monthly">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-calendar-day" style="color:#6366f1"></i></div><h3>Monthly Income</h3><p>Regular monthly payouts</p></div></label>
-            <label class="option-card"><input type="radio" name="returnType" value="annual">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-calendar-check" style="color:#22c55e"></i></div><h3>Annual Growth</h3><p>Year-over-year compounding</p></div></label>
-            <label class="option-card"><input type="radio" name="returnType" value="maturity">
-              <div class="option-content"><div class="option-icon"><i class="fas fa-hourglass-end" style="color:#f59e0b"></i></div><h3>At Maturity</h3><p>Long-term capital appreciation</p></div></label>
+            <label class="option-card">
+              <input type="radio" name="market" value="india" checked>
+              <div class="option-content">
+                <div class="option-icon">🇮🇳</div>
+                <h3>Indian Mutual Funds</h3>
+                <p>Live scan across AMFI registered Direct & Regular schemes</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="market" value="us">
+              <div class="option-content">
+                <div class="option-icon">🇺🇸</div>
+                <h3>US & Global Funds / ETFs</h3>
+                <p>Live scan of S&P 500, Nasdaq, Vanguard, Fidelity & Global ETFs</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="market" value="both">
+              <div class="option-content">
+                <div class="option-icon">🌍</div>
+                <h3>India + US + Equities</h3>
+                <p>Combined multi-market scan across Indian MFs & Global ETFs/Stocks</p>
+              </div>
+            </label>
           </div>
         </div>
-      </div>
 
-      <!-- STEP 5 — Investment Mode -->
-      <div class="wizard-step hidden" data-step="5">
-        <div class="step-header">
-          <span class="step-number">05</span>
-          <h2>How Would You Like to Invest?</h2>
-          <p>Choose your preferred investment mode</p>
+        <!-- STEP 2: Risk Appetite -->
+        <div class="wizard-step hidden" data-step="2">
+          <div class="step-header">
+            <span class="step-badge">STEP 02 OF 08</span>
+            <h2 class="serif-title">What Is Your Risk & Volatility Tolerance?</h2>
+            <p>We measure each fund's actual historical standard deviation to match your comfort zone.</p>
+          </div>
+          <div class="options-grid cols-2">
+            <label class="option-card">
+              <input type="radio" name="risk" value="low">
+              <div class="option-content">
+                <div class="option-icon" style="background:var(--pastel-sage);color:var(--pastel-sage-strong)"><i class="fas fa-shield-halved"></i></div>
+                <h3>Low Risk (Target Volatility < 6%)</h3>
+                <p>Capital preservation first — Corporate Bond, Liquid, Gilt & Treasury funds.</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="risk" value="moderate" checked>
+              <div class="option-content">
+                <div class="option-icon" style="background:var(--pastel-sky);color:var(--pastel-sky-strong)"><i class="fas fa-scale-balanced"></i></div>
+                <h3>Moderate Risk (Volatility 6% – 14%)</h3>
+                <p>Balanced compounding — Large Cap, Flexi Cap, Index & Hybrid funds.</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="risk" value="high">
+              <div class="option-content">
+                <div class="option-icon" style="background:var(--pastel-butter);color:var(--pastel-butter-strong)"><i class="fas fa-chart-line"></i></div>
+                <h3>High Risk (Volatility 14% – 18%)</h3>
+                <p>Aggressive wealth creation — Mid Cap, Multi Cap, ELSS & Growth ETFs.</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="risk" value="very-high">
+              <div class="option-content">
+                <div class="option-icon" style="background:var(--pastel-peach);color:var(--pastel-peach-strong)"><i class="fas fa-fire"></i></div>
+                <h3>Very High Risk (Volatility > 18%)</h3>
+                <p>Maximum long-term alpha — Small Cap, Sectoral & High-Beta Thematic funds.</p>
+              </div>
+            </label>
+          </div>
         </div>
-        <div class="options-grid cols-3">
-          <label class="option-card"><input type="radio" name="mode" value="sip">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-sync-alt" style="color:#6366f1"></i></div><h3>SIP (Monthly)</h3><p>Fixed amount every month</p><div class="tag">Best for beginners</div></div></label>
-          <label class="option-card"><input type="radio" name="mode" value="lumpsum">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-hand-holding-usd" style="color:#f59e0b"></i></div><h3>Lumpsum</h3><p>Invest a large amount at once</p><div class="tag">Timing matters</div></div></label>
-          <label class="option-card"><input type="radio" name="mode" value="both">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-layer-group" style="color:#22c55e"></i></div><h3>SIP + Lumpsum</h3><p>Combine regular SIPs with top-ups</p><div class="tag">Flexible</div></div></label>
-        </div>
-      </div>
 
-      <!-- STEP 6 — Investor Type -->
-      <div class="wizard-step hidden" data-step="6">
-        <div class="step-header">
-          <span class="step-number">06</span>
-          <h2>What Type of Investor Are You?</h2>
-          <p>Helps match fund complexity to your experience</p>
+        <!-- STEP 3: Investment Amount -->
+        <div class="wizard-step hidden" data-step="3">
+          <div class="step-header">
+            <span class="step-badge">STEP 03 OF 08</span>
+            <h2 class="serif-title">How Much Capital Are You Planning to Deploy?</h2>
+            <p>Used to project your real-time compounding wealth on the results screen.</p>
+          </div>
+          <div style="display:flex;gap:0.5rem;margin-bottom:1.25rem;">
+            <button type="button" class="btn-secondary active" id="currBtnInr" onclick="switchWizardCurrency('inr')">₹ INR</button>
+            <button type="button" class="btn-secondary" id="currBtnUsd" onclick="switchWizardCurrency('usd')">$ USD</button>
+          </div>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="radio" name="amount" value="micro">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-seedling"></i></div>
+                <h3 class="amt-lbl" data-inr="₹500 – ₹5,000" data-usd="$50 – $500">₹500 – ₹5,000</h3>
+                <p>Starter SIP / Micro portfolio</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="amount" value="small" checked>
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-leaf"></i></div>
+                <h3 class="amt-lbl" data-inr="₹5,000 – ₹25,000" data-usd="$500 – $2,500">₹5,000 – ₹25,000</h3>
+                <p>Core monthly wealth builder</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="amount" value="medium">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-tree"></i></div>
+                <h3 class="amt-lbl" data-inr="₹25,000 – ₹1 Lakh" data-usd="$2,500 – $10,000">₹25,000 – ₹1 Lakh</h3>
+                <p>Multi-asset diversified allocation</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="amount" value="large">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-mountain"></i></div>
+                <h3 class="amt-lbl" data-inr="₹1 Lakh – ₹5 Lakh" data-usd="$10,000 – $50,000">₹1 Lakh – ₹5 Lakh</h3>
+                <p>High-conviction portfolio</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="amount" value="xlarge">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-gem"></i></div>
+                <h3 class="amt-lbl" data-inr="₹5 Lakh+" data-usd="$50,000+">₹5 Lakh+</h3>
+                <p>HNI / Institutional scale</p>
+              </div>
+            </label>
+          </div>
         </div>
-        <div class="options-grid cols-3">
-          <label class="option-card"><input type="radio" name="investorType" value="beginner">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-graduation-cap" style="color:#22c55e"></i></div><h3>Beginner</h3><p>New to investing — prefer simple, safe funds</p></div></label>
-          <label class="option-card"><input type="radio" name="investorType" value="intermediate">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-chart-pie" style="color:#0ea5e9"></i></div><h3>Intermediate</h3><p>Some experience — comfortable with variety</p></div></label>
-          <label class="option-card"><input type="radio" name="investorType" value="experienced">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-chess-king" style="color:#a855f7"></i></div><h3>Experienced</h3><p>Deep knowledge — open to all fund types</p></div></label>
-        </div>
-      </div>
 
-      <!-- STEP 7 — Sector -->
-      <div class="wizard-step hidden" data-step="7">
-        <div class="step-header">
-          <span class="step-number">07</span>
-          <h2>Any Preferred Sector?</h2>
-          <p>Pick sectors you're bullish on, or choose "No Preference"</p>
-        </div>
-        <div class="options-grid cols-3 multi-select sector-options">
-          <label class="option-card"><input type="checkbox" name="sector" value="no-preference">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-globe" style="color:#6366f1"></i></div><h3>No Preference</h3><p>Diversified</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="technology">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-microchip" style="color:#3b82f6"></i></div><h3>Technology</h3><p>IT, AI, SaaS</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="healthcare">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-heartbeat" style="color:#ef4444"></i></div><h3>Healthcare</h3><p>Pharma, Biotech</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="banking">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-university" style="color:#f59e0b"></i></div><h3>Banking & Finance</h3><p>Banks, NBFCs</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="infrastructure">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-hard-hat" style="color:#8b5cf6"></i></div><h3>Infrastructure</h3><p>Energy, Utilities</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="consumer">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-shopping-cart" style="color:#ec4899"></i></div><h3>Consumer</h3><p>FMCG, Retail</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="manufacturing">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-industry" style="color:#14b8a6"></i></div><h3>Manufacturing</h3><p>Auto, Metals</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="realestate">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-building" style="color:#f97316"></i></div><h3>Real Estate</h3><p>REITs, Property</p></div></label>
-          <label class="option-card"><input type="checkbox" name="sector" value="energy">
-            <div class="option-content"><div class="option-icon"><i class="fas fa-solar-panel" style="color:#eab308"></i></div><h3>Energy</h3><p>Oil, Renewables</p></div></label>
-        </div>
-      </div>
+        <!-- STEP 4: Target Returns -->
+        <div class="wizard-step hidden" data-step="4">
+          <div class="step-header">
+            <span class="step-badge">STEP 04 OF 08</span>
+            <h2 class="serif-title">What Annualized Return (CAGR) Are You Targeting?</h2>
+            <p>Our engine compares your target against each scheme's real 3-Year & 5-Year live CAGR.</p>
+          </div>
+          <div class="options-grid cols-2" style="margin-bottom:1.5rem;">
+            <label class="option-card">
+              <input type="radio" name="returns" value="conservative">
+              <div class="option-content">
+                <h3>6% – 9% p.a.</h3>
+                <p>Steady fixed-income / inflation-beating debt returns</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="returns" value="moderate" checked>
+              <div class="option-content">
+                <h3>10% – 15% p.a.</h3>
+                <p>Core equity & index compounding benchmark</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="returns" value="high">
+              <div class="option-content">
+                <h3>15% – 20% p.a.</h3>
+                <p>Outperforming Flexi, Mid-cap & Sectoral leaders</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="returns" value="very-high">
+              <div class="option-content">
+                <h3>20%+ p.a.</h3>
+                <p>High-alpha Small-cap & thematic momentum</p>
+              </div>
+            </label>
+          </div>
 
-      <!-- STEP 8 — Market Condition -->
-      <div class="wizard-step hidden" data-step="8">
-        <div class="step-header">
-          <span class="step-number">08</span>
-          <h2>Current Market Sentiment</h2>
-          <p>We auto-detect conditions — you can override below</p>
+          <h3 style="font-size:0.92rem;color:var(--ink-secondary);margin-bottom:0.75rem;">Plan & Distribution Preference</h3>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="radio" name="returnType" value="annual" checked>
+              <div class="option-content">
+                <h3>Direct Plan — Growth</h3>
+                <p>Zero distributor commission, full compounding</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="returnType" value="maturity">
+              <div class="option-content">
+                <h3>Long-Term Horizon (5Y+)</h3>
+                <p>Prioritizes 5-Year consistency & low drawdown</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="returnType" value="monthly">
+              <div class="option-content">
+                <h3>Income / Stability Focus</h3>
+                <p>Prioritizes low-volatility & steady cashflow funds</p>
+              </div>
+            </label>
+          </div>
         </div>
-        <div class="market-detection">
-          <div class="auto-detect-card" id="marketAutoDetect">
-            <div class="detect-header"><i class="fas fa-satellite-dish"></i><span>Auto-Detected Sentiment</span></div>
-            <div class="detect-body" id="marketDetectBody">
-              <div class="loading-spinner"><div class="spinner"></div><span>Analyzing market data...</span></div>
+
+        <!-- STEP 5: Mode -->
+        <div class="wizard-step hidden" data-step="5">
+          <div class="step-header">
+            <span class="step-badge">STEP 05 OF 08</span>
+            <h2 class="serif-title">How Would You Like to Invest?</h2>
+            <p>Determines how we model your wealth projection and rupee/dollar cost averaging.</p>
+          </div>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="radio" name="mode" value="sip" checked>
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-rotate"></i></div>
+                <h3>Monthly SIP</h3>
+                <p>Disciplined monthly investing with rupee-cost averaging</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="mode" value="lumpsum">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-coins"></i></div>
+                <h3>One-Time Lumpsum</h3>
+                <p>Single upfront capital deployment</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="mode" value="both">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-layer-group"></i></div>
+                <h3>SIP + Tactical Top-Up</h3>
+                <p>Core monthly SIP plus dip buying</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 6: Experience -->
+        <div class="wizard-step hidden" data-step="6">
+          <div class="step-header">
+            <span class="step-badge">STEP 06 OF 08</span>
+            <h2 class="serif-title">What Is Your Investing Experience?</h2>
+            <p>Helps weight Sharpe consistency vs. high-beta cyclical funds.</p>
+          </div>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="radio" name="investorType" value="beginner">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Beginner</h3>
+                <p>Prefers foundational Index, Large Cap & Flexi Cap funds</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="investorType" value="intermediate" checked>
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3>Intermediate</h3>
+                <p>Comfortable combining Core & Mid-cap / Thematic funds</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="investorType" value="experienced">
+              <div class="option-content">
+                <div class="option-icon"><i class="fas fa-chess-king"></i></div>
+                <h3>Experienced</h3>
+                <p>Open to Small-cap, Sectoral & Global equity strategies</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- STEP 7: Sector & Custom Live Keyword -->
+        <div class="wizard-step hidden" data-step="7">
+          <div class="step-header">
+            <span class="step-badge">STEP 07 OF 08</span>
+            <h2 class="serif-title">Select Preferred Sectors or Type Any AMC / Theme</h2>
+            <p>Our live API query engine will dynamically search AMFI & Global feeds for your chosen themes.</p>
+          </div>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="no-preference" checked>
+              <div class="option-content">
+                <h3>🌐 Diversified (All-Cap)</h3>
+                <p>Large, Flexi, Mid, Small & Broad Index</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="banking">
+              <div class="option-content">
+                <h3>🏦 Banking & Financial</h3>
+                <p>Banks, NBFCs, FinTech & Insurance</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="technology">
+              <div class="option-content">
+                <h3>💻 Technology & Digital</h3>
+                <p>IT Services, AI, Semiconductors & Nasdaq</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="healthcare">
+              <div class="option-content">
+                <h3>🩺 Healthcare & Pharma</h3>
+                <p>Pharmaceuticals, Hospitals & Biotech</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="infrastructure">
+              <div class="option-content">
+                <h3>🏗️ Infrastructure & Capex</h3>
+                <p>Capital Goods, Engineering & Logistics</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="consumer">
+              <div class="option-content">
+                <h3>🛍️ Consumption & FMCG</h3>
+                <p>Retail, Auto, FMCG & Domestic Demand</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="manufacturing">
+              <div class="option-content">
+                <h3>⚙️ Manufacturing & Defense</h3>
+                <p>Industrial Production & Make-in-India</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="energy">
+              <div class="option-content">
+                <h3>⚡ Energy & Gold / Commodities</h3>
+                <p>Power, Natural Resources & Gold ETFs</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="checkbox" name="sector" value="elss">
+              <div class="option-content">
+                <h3>🧾 ELSS Tax Saver (Sec 80C)</h3>
+                <p>Tax-saving equity schemes with 3Y lock-in</p>
+              </div>
+            </label>
+          </div>
+
+          <div class="custom-keyword-box">
+            <label for="customLiveQuery"><i class="fas fa-magnifying-glass-chart"></i> Optional: Filter by Specific AMC, Company, or Keyword (Live API Query)</label>
+            <input type="text" id="customLiveQuery" placeholder="e.g., SBI, HDFC, Nippon, Quant, Mirae, Parag Parikh, Vanguard, Dividend...">
+          </div>
+        </div>
+
+        <!-- STEP 8: Live Market Condition -->
+        <div class="wizard-step hidden" data-step="8">
+          <div class="step-header">
+            <span class="step-badge">STEP 08 OF 08</span>
+            <h2 class="serif-title">Live Market Sentiment Analysis</h2>
+            <p>Computed from live benchmark index data. You can accept the live reading or override it below.</p>
+          </div>
+
+          <div id="wizardMarketBox" style="background:var(--pastel-sky);border:1px solid var(--pastel-sky-border);padding:1.35rem;border-radius:var(--radius-lg);margin-bottom:1.5rem;">
+            <div style="font-weight:800;font-size:0.85rem;color:var(--pastel-sky-strong);margin-bottom:0.65rem;">
+              <i class="fas fa-satellite-dish"></i> REAL-TIME BENCHMARK MOMENTUM
+            </div>
+            <div id="wizardMarketMetrics" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0.85rem;">
+              <span>Fetching live benchmark trend...</span>
             </div>
           </div>
-        </div>
-        <div class="override-section">
-          <h3><i class="fas fa-sliders-h"></i> Or Select Manually:</h3>
+
           <div class="options-grid cols-3">
-            <label class="option-card"><input type="radio" name="marketCondition" value="bullish">
-              <div class="option-content"><div class="option-icon" style="color:#22c55e"><i class="fas fa-arrow-trend-up"></i></div><h3>Bullish</h3><p>Market trending up</p></div></label>
-            <label class="option-card"><input type="radio" name="marketCondition" value="neutral">
-              <div class="option-content"><div class="option-icon" style="color:#f59e0b"><i class="fas fa-arrows-left-right"></i></div><h3>Neutral</h3><p>Market is sideways</p></div></label>
-            <label class="option-card"><input type="radio" name="marketCondition" value="bearish">
-              <div class="option-content"><div class="option-icon" style="color:#ef4444"><i class="fas fa-arrow-trend-down"></i></div><h3>Bearish</h3><p>Market declining</p></div></label>
+            <label class="option-card">
+              <input type="radio" name="marketCondition" value="bullish" checked>
+              <div class="option-content">
+                <h3>📈 Bullish Momentum</h3>
+                <p>Favors growth, mid/small-cap & momentum leaders</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="marketCondition" value="neutral">
+              <div class="option-content">
+                <h3>⚖️ Neutral / Sideways</h3>
+                <p>Favors Flexi-cap, Multi-asset & quality stock pickers</p>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="marketCondition" value="bearish">
+              <div class="option-content">
+                <h3>🛡️ Bearish / Defensive</h3>
+                <p>Favors low-drawdown Large Cap, Balanced & Debt funds</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="wizard-nav">
+          <button class="btn-secondary" id="btnPrev" onclick="prevStep()" disabled>
+            <i class="fas fa-arrow-left"></i> Previous
+          </button>
+          <button class="btn-primary" id="btnNext" onclick="nextStep()">
+            Next Step <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- WIZARD LIVE RESULTS AREA -->
+      <div id="wizardResultsBox" class="hidden">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.5rem;">
+          <div>
+            <button class="btn-secondary" onclick="backToWizard()" style="margin-bottom:0.65rem;">
+              <i class="fas fa-sliders"></i> Modify Wizard Answers
+            </button>
+            <h2 class="serif-title" style="font-size:1.85rem;">Your Live Scored Recommendations</h2>
+            <p id="wizardResultsSubtitle" style="color:var(--ink-secondary);font-size:0.95rem;"></p>
+          </div>
+          <button class="btn-pastel" onclick="runWizardLiveAnalysis()">
+            <i class="fas fa-rotate"></i> Refresh Live API Data
+          </button>
+        </div>
+
+        <div id="wizardProfileTags" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1.5rem;"></div>
+
+        <div id="wizardLiveLoader" class="live-loader hidden">
+          <div class="spinner-ring"></div>
+          <h3 id="wizardLoaderStatus">Scanning Live AMFI & Global Market Feeds...</h3>
+          <p id="wizardLoaderDetail" style="color:var(--ink-secondary);font-size:0.88rem;margin-top:0.4rem;"></p>
+        </div>
+
+        <div id="wizardResultsGrid" class="results-grid"></div>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         VIEW 3: LIVE MARKET PULSE & VERIFIED TAX GUIDE (FY 2025-26 / 2026-27)
+         ================================================================= -->
+    <section id="view-pulse" class="hidden">
+      <div class="search-results-panel">
+        <span class="badge badge-sage">UPDATED STATUTORY REFERENCE</span>
+        <h2 class="serif-title" style="font-size:1.75rem;margin:0.4rem 0 0.5rem;">Verified Mutual Fund & Equity Taxation Guide</h2>
+        <p style="color:var(--ink-secondary);font-size:0.92rem;margin-bottom:1.5rem;">
+          Reflects current capital gains rules effective after the July 23, 2024 Union Budget & Finance Act 2025/2026.
+        </p>
+
+        <div class="bento-grid" style="margin-top:0;">
+          <div class="bento-card sage">
+            <span class="badge badge-lavender" style="margin-bottom:0.5rem;">≥ 65% Domestic Equity</span>
+            <h3>Equity Funds & Listed Shares</h3>
+            <p style="margin-top:0.4rem;">
+              <strong>Short-Term (Held ≤ 12M):</strong> <strong>20%</strong> under Sec 111A (+ 4% cess).<br>
+              <strong>Long-Term (Held > 12M):</strong> <strong>12.5%</strong> on gains exceeding <strong>₹1.25 Lakh</strong> per financial year (Sec 112A, no indexation).
+            </p>
+          </div>
+
+          <div class="bento-card lavender">
+            <span class="badge badge-sage" style="margin-bottom:0.5rem;">Section 80C Eligible</span>
+            <h3>ELSS Tax Saving Funds</h3>
+            <p style="margin-top:0.4rem;">
+              <strong>Lock-in Period:</strong> Mandatory <strong>3 Years</strong>.<br>
+              <strong>Tax Deduction:</strong> Up to <strong>₹1.5 Lakh/yr</strong> under Sec 80C (Old Tax Regime).<br>
+              <strong>Redemption Tax:</strong> LTCG at <strong>12.5%</strong> above ₹1.25 Lakh annual exemption.
+            </p>
+          </div>
+
+          <div class="bento-card peach">
+            <span class="badge badge-peach" style="margin-bottom:0.5rem;">< 35% Equity (Sec 50AA)</span>
+            <h3>Specified Debt Mutual Funds</h3>
+            <p style="margin-top:0.4rem;">
+              <strong>Units bought on/after Apr 1, 2023:</strong> All capital gains (regardless of holding period) are added to income and taxed at your <strong>Applicable Income Tax Slab Rate</strong> without indexation.
+            </p>
+          </div>
+
+          <div class="bento-card sky">
+            <span class="badge badge-sky" style="margin-bottom:0.5rem;">Global / FoF / Gold</span>
+            <h3>International & Gold Funds</h3>
+            <p style="margin-top:0.4rem;">
+              <strong>Short-Term (Held ≤ 24M):</strong> Taxed at <strong>Income Tax Slab Rate</strong>.<br>
+              <strong>Long-Term (Held > 24M):</strong> Taxed at flat <strong>12.5% LTCG</strong> without indexation (post April 1, 2025 rules).
+            </p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Nav Buttons -->
-      <div class="wizard-nav">
-        <button class="btn-secondary" id="btnPrev" onclick="prevStep()" disabled><i class="fas fa-arrow-left"></i> Back</button>
-        <button class="btn-primary" id="btnNext" onclick="nextStep()">Next <i class="fas fa-arrow-right"></i></button>
+    <!-- Statutory Disclaimer -->
+    <div class="disclaimer-banner">
+      <i class="fas fa-shield-halved" style="font-size:1.2rem;margin-top:0.15rem;"></i>
+      <div>
+        <strong>Transparency & Regulatory Note:</strong> All NAVs, stock prices, and historical return series are fetched live from public AMFI (`api.mfapi.in`) and global market feeds. Historical CAGRs and volatility metrics are computed mathematically from actual past NAV/price dates and do not guarantee future performance. Mutual fund and equity investments are subject to market risks. Please consult a SEBI-registered investment advisor (RIA) before making financial commitments.
       </div>
     </div>
-  </section>
 
-  <!-- ========== RESULTS ========== -->
-  <section id="results" class="results hidden">
-    <div class="results-container">
-      <div class="results-header">
-        <button class="btn-back" onclick="backToAdvisor()"><i class="fas fa-arrow-left"></i> Modify Preferences</button>
-        <h2><i class="fas fa-trophy"></i> Your Personalized Recommendations</h2>
-        <p class="results-subtitle" id="resultsSummary"></p>
-      </div>
-      <div class="profile-summary" id="profileSummary"></div>
-      <div class="results-loading" id="resultsLoading">
-        <div class="analysis-animation"><div class="analysis-ring"></div><div class="analysis-icon"><i class="fas fa-brain"></i></div></div>
-        <h3>Analyzing Funds...</h3>
-        <p id="analysisStatus">Evaluating risk profiles and market conditions</p>
-      </div>
-      <div class="results-grid" id="resultsGrid"></div>
-      <div class="disclaimer">
-        <i class="fas fa-info-circle"></i>
-        <p><strong>Disclaimer:</strong> This tool provides educational recommendations only. Past performance does not guarantee future returns. Please consult a certified financial advisor before making investment decisions. Mutual fund investments are subject to market risks.</p>
-      </div>
-      <button class="btn-primary btn-large" onclick="startOver()" style="margin:2rem auto;display:block"><i class="fas fa-redo"></i> Start Over</button>
-    </div>
-  </section>
+  </main>
 
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="footer-brand"><i class="fas fa-chart-line"></i> FundWise</div>
-      <p>Smart mutual fund recommendations powered by data analysis.</p>
-      <p class="footer-disclaimer">For educational purposes only. Not financial advice.</p>
+  <!-- =================================================================
+       DEEP-DIVE LIVE RESEARCH MODAL (SVG CHART + SIP CALCULATOR)
+       ================================================================= -->
+  <div id="researchModal" class="modal-backdrop hidden" onclick="if(event.target===this) closeResearchModal()">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeResearchModal()" title="Close"><i class="fas fa-times"></i></button>
+      <div id="modalContentBody"></div>
     </div>
+  </div>
+
+  <footer>
+    <div style="font-weight:800;color:var(--ink-primary);font-size:1rem;margin-bottom:0.3rem;">
+      <i class="fas fa-seedling" style="color:var(--brand-primary)"></i> FundWise Live Intelligence
+    </div>
+    <p>Powered by live AMFI NAV APIs & Global Market Feeds · Zero Hardcoded Data</p>
   </footer>
 
-  <!-- ========================================================
-       ALL APPLICATION JAVASCRIPT (data + market + engine + app)
-       ======================================================== -->
+  <!-- =================================================================
+       LIVE REAL-TIME ENGINE, API CONNECTORS & QUANTITATIVE CALCULATOR
+       ================================================================= -->
   <script>
-    /* ================================================
-       1. data.js — Curated Mutual Fund Database
-       ================================================ */
-    const FUND_DATABASE = [
-      // ===================== INDIAN MARKET =====================
-      // --- Large Cap ---
-      { id:'in-sbi-bluechip', name:'SBI Blue Chip Fund', category:'Large Cap', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.58, returns:{y1:16.2,y3:13.5,y5:14.8}, rating:5, fundSizeCr:45000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Flagship large-cap fund investing in top 100 companies by market cap. Consistent performer with low volatility.' },
-      { id:'in-mirae-largecap', name:'Mirae Asset Large Cap Fund', category:'Large Cap', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.33, returns:{y1:17.1,y3:14.2,y5:15.6}, rating:5, fundSizeCr:38000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Top-rated large-cap fund with strong stock selection. Benchmark-beating returns consistently.' },
-      { id:'in-axis-bluechip', name:'Axis Bluechip Fund', category:'Large Cap', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.48, returns:{y1:14.8,y3:12.9,y5:14.1}, rating:4, fundSizeCr:35000, sectors:['diversified'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Quality-focused large-cap fund with emphasis on growth at reasonable price.' },
-      { id:'in-icici-bluechip', name:'ICICI Pru Bluechip Fund', category:'Large Cap', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.42, returns:{y1:15.5,y3:13.1,y5:14.3}, rating:4, fundSizeCr:42000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Well-diversified large-cap portfolio managed by experienced fund managers.' },
+    /* ==========================================================================
+       1. GLOBAL STATE & LIVE CACHE
+       ========================================================================== */
+    const TOTAL_STEPS = 8;
+    const STEP_LABELS = ['Universe', 'Risk', 'Budget', 'Returns', 'Mode', 'Experience', 'Sectors', 'Sentiment'];
+    let currentStep = 1;
+    let wizardCurrency = 'inr';
+    let userPrefs = {};
+    let liveBenchmarks = [];
+    let detectedSentiment = 'bullish';
 
-      // --- Mid Cap ---
-      { id:'in-hdfc-midcap', name:'HDFC Mid-Cap Opportunities Fund', category:'Mid Cap', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.65, returns:{y1:22.4,y3:18.7,y5:19.2}, rating:5, fundSizeCr:52000, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'India\'s largest mid-cap fund. Invests in high-quality mid-sized companies with strong growth potential.' },
-      { id:'in-kotak-emerging', name:'Kotak Emerging Equity Fund', category:'Mid Cap', market:'india', riskLevel:'high', minSIP:1000, minLumpsum:5000, expenseRatio:1.52, returns:{y1:21.8,y3:17.9,y5:18.5}, rating:5, fundSizeCr:32000, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Focused mid-cap fund with excellent stock selection in emerging growth stories.' },
-      { id:'in-pgim-midcap', name:'PGIM India Midcap Opp Fund', category:'Mid Cap', market:'india', riskLevel:'high', minSIP:1000, minLumpsum:5000, expenseRatio:1.45, returns:{y1:24.3,y3:20.1,y5:21.3}, rating:5, fundSizeCr:12000, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Concentrated mid-cap portfolio with exceptional returns. Higher volatility, higher reward.' },
+    // Cache fetched scheme details in memory during session to keep UI snappy
+    const navCache = new Map();
+    const activeInstrumentStore = new Map();
 
-      // --- Small Cap ---
-      { id:'in-sbi-smallcap', name:'SBI Small Cap Fund', category:'Small Cap', market:'india', riskLevel:'very-high', minSIP:500, minLumpsum:5000, expenseRatio:1.62, returns:{y1:28.5,y3:22.3,y5:24.1}, rating:5, fundSizeCr:28000, sectors:['diversified'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Premier small-cap fund with rigorous stock selection. High growth potential with significant volatility.' },
-      { id:'in-nippon-smallcap', name:'Nippon India Small Cap Fund', category:'Small Cap', market:'india', riskLevel:'very-high', minSIP:500, minLumpsum:5000, expenseRatio:1.55, returns:{y1:30.2,y3:24.5,y5:26.8}, rating:5, fundSizeCr:46000, sectors:['diversified'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'India\'s largest small-cap fund. Broad-based small-cap exposure with proven track record.' },
-      { id:'in-quant-smallcap', name:'Quant Small Cap Fund', category:'Small Cap', market:'india', riskLevel:'very-high', minSIP:1000, minLumpsum:5000, expenseRatio:1.68, returns:{y1:32.1,y3:28.9,y5:30.2}, rating:4, fundSizeCr:18000, sectors:['diversified'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Quant-driven small-cap strategy with explosive returns. Very high risk-reward ratio.' },
+    /* ==========================================================================
+       2. MATHEMATICAL & QUANTITATIVE ENGINE (CAGR, VOLATILITY, DRAWDOWN)
+       ========================================================================== */
 
-      // --- Flexi / Multi Cap ---
-      { id:'in-parag-flexicap', name:'Parag Parikh Flexi Cap Fund', category:'Flexi Cap', market:'india', riskLevel:'moderate', minSIP:1000, minLumpsum:1000, expenseRatio:1.28, returns:{y1:18.3,y3:15.6,y5:17.2}, rating:5, fundSizeCr:55000, sectors:['diversified','technology'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'Unique flexi-cap fund with international diversification. Known for value investing approach and consistency.' },
-      { id:'in-hdfc-flexicap', name:'HDFC Flexi Cap Fund', category:'Flexi Cap', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.46, returns:{y1:16.8,y3:14.1,y5:15.5}, rating:4, fundSizeCr:42000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Flexible allocation across market caps. Adapts to market conditions dynamically.' },
-      { id:'in-quant-active', name:'Quant Active Fund', category:'Multi Cap', market:'india', riskLevel:'high', minSIP:1000, minLumpsum:5000, expenseRatio:1.58, returns:{y1:25.6,y3:22.8,y5:24.5}, rating:4, fundSizeCr:8000, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Data-driven multi-cap approach with momentum-based stock selection.' },
-
-      // --- Index Funds ---
-      { id:'in-uti-nifty50', name:'UTI Nifty 50 Index Fund', category:'Index Fund', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:1000, expenseRatio:0.18, returns:{y1:14.2,y3:12.1,y5:13.5}, rating:4, fundSizeCr:15000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Low-cost Nifty 50 index tracker. Ideal starting point for passive investing.' },
-      { id:'in-hdfc-sensex', name:'HDFC Index Fund – Sensex', category:'Index Fund', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:0.20, returns:{y1:13.8,y3:11.9,y5:13.1}, rating:4, fundSizeCr:8000, sectors:['diversified'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Tracks the BSE Sensex at very low cost. Simple, effective equity exposure.' },
-      { id:'in-motilal-nifty500', name:'Motilal Oswal Nifty 500 Fund', category:'Index Fund', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:500, expenseRatio:0.22, returns:{y1:16.5,y3:13.8,y5:15.0}, rating:4, fundSizeCr:4000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Broad market index covering top 500 companies. Excellent diversification at low cost.' },
-
-      // --- ELSS (Tax Saving) ---
-      { id:'in-mirae-taxsaver', name:'Mirae Asset Tax Saver Fund', category:'ELSS', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:500, expenseRatio:1.35, returns:{y1:17.8,y3:14.5,y5:16.0}, rating:5, fundSizeCr:22000, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Best-in-class ELSS fund. Tax saving under Section 80C with excellent equity returns.' },
-      { id:'in-quant-taxplan', name:'Quant Tax Plan', category:'ELSS', market:'india', riskLevel:'high', minSIP:500, minLumpsum:500, expenseRatio:1.55, returns:{y1:24.2,y3:20.5,y5:22.8}, rating:4, fundSizeCr:6000, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Aggressive ELSS fund with quant-driven stock picks. High returns with higher volatility.' },
-
-      // --- Debt / Fixed Income ---
-      { id:'in-hdfc-corporate-bond', name:'HDFC Corporate Bond Fund', category:'Debt', market:'india', riskLevel:'low', minSIP:500, minLumpsum:5000, expenseRatio:0.45, returns:{y1:7.2,y3:6.8,y5:7.5}, rating:5, fundSizeCr:30000, sectors:['debt'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Top-rated corporate bond fund. Steady income with low risk. Ideal for conservative investors.' },
-      { id:'in-icici-allseasons', name:'ICICI Pru All Seasons Bond Fund', category:'Debt', market:'india', riskLevel:'low', minSIP:1000, minLumpsum:5000, expenseRatio:0.58, returns:{y1:7.8,y3:7.2,y5:7.9}, rating:4, fundSizeCr:12000, sectors:['debt'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Dynamic bond allocation across maturities. Adapts to interest rate cycles.' },
-      { id:'in-sbi-magnum-gilt', name:'SBI Magnum Gilt Fund', category:'Govt Securities', market:'india', riskLevel:'low', minSIP:500, minLumpsum:5000, expenseRatio:0.52, returns:{y1:6.8,y3:6.5,y5:7.1}, rating:4, fundSizeCr:8000, sectors:['debt'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Government securities fund with sovereign guarantee. Safest fixed-income option.' },
-
-      // --- Hybrid ---
-      { id:'in-icici-equity-debt', name:'ICICI Pru Equity & Debt Fund', category:'Aggressive Hybrid', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.48, returns:{y1:14.5,y3:12.8,y5:14.0}, rating:5, fundSizeCr:32000, sectors:['diversified','debt'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'Balanced equity-debt allocation. Great for moderate investors wanting both growth and stability.' },
-      { id:'in-hdfc-balanced-adv', name:'HDFC Balanced Advantage Fund', category:'Balanced Advantage', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.35, returns:{y1:13.2,y3:11.5,y5:12.8}, rating:4, fundSizeCr:65000, sectors:['diversified','debt'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'Dynamic asset allocation between equity and debt. All-weather fund that auto-adjusts.' },
-      { id:'in-icici-monthly-income', name:'ICICI Pru MIP 25 Fund', category:'Conservative Hybrid', market:'india', riskLevel:'low', minSIP:1000, minLumpsum:5000, expenseRatio:1.20, returns:{y1:8.5,y3:7.8,y5:8.2}, rating:4, fundSizeCr:5000, sectors:['debt','diversified'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Monthly income plan with 75% debt + 25% equity. Regular payout with moderate growth.' },
-
-      // --- Sectoral / Thematic ---
-      { id:'in-icici-tech', name:'ICICI Pru Technology Fund', category:'Sectoral - Technology', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.72, returns:{y1:20.5,y3:16.8,y5:22.1}, rating:4, fundSizeCr:12000, sectors:['technology'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Focused on IT and technology companies. Benefits from digital transformation trends.' },
-      { id:'in-sbi-healthcare', name:'SBI Healthcare Opp Fund', category:'Sectoral - Healthcare', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.80, returns:{y1:18.3,y3:14.5,y5:16.8}, rating:4, fundSizeCr:3200, sectors:['healthcare'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Pharma and healthcare focused fund. Defensive sector with long-term structural growth.' },
-      { id:'in-nippon-banking', name:'Nippon India Banking & Fin Fund', category:'Sectoral - Banking', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.65, returns:{y1:19.8,y3:15.2,y5:17.5}, rating:4, fundSizeCr:6500, sectors:['banking'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Banking and financial services sector fund. High beta, leveraged to economic growth.' },
-      { id:'in-dsp-natural-res', name:'DSP Natural Resources Fund', category:'Sectoral - Energy', market:'india', riskLevel:'high', minSIP:500, minLumpsum:1000, expenseRatio:1.72, returns:{y1:15.2,y3:18.5,y5:16.3}, rating:3, fundSizeCr:1200, sectors:['energy','manufacturing'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Natural resources and commodity focused fund. Cyclical but rewarding in commodity upcycles.' },
-      { id:'in-tata-infra', name:'Tata Infrastructure Fund', category:'Sectoral - Infra', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.75, returns:{y1:22.1,y3:19.8,y5:18.5}, rating:4, fundSizeCr:2500, sectors:['infrastructure'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Infrastructure theme fund benefiting from India\'s capex cycle and government spending.' },
-      { id:'in-icici-fmcg', name:'ICICI Pru FMCG Fund', category:'Sectoral - Consumer', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.68, returns:{y1:12.5,y3:10.8,y5:13.2}, rating:3, fundSizeCr:2800, sectors:['consumer'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'FMCG and consumer staples fund. Defensive in downturns, steady in all conditions.' },
-      { id:'in-kotak-realty', name:'Kotak Infra & Economic Reform', category:'Sectoral - Real Estate', market:'india', riskLevel:'high', minSIP:500, minLumpsum:5000, expenseRatio:1.72, returns:{y1:24.5,y3:20.2,y5:18.9}, rating:3, fundSizeCr:1800, sectors:['realestate','infrastructure'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Real estate and infrastructure focused fund. Rides the property and construction cycle.' },
-      { id:'in-sbi-esg', name:'SBI Magnum Equity ESG Fund', category:'Thematic - ESG', market:'india', riskLevel:'moderate', minSIP:500, minLumpsum:5000, expenseRatio:1.55, returns:{y1:14.8,y3:12.2,y5:13.5}, rating:3, fundSizeCr:5500, sectors:['esg','diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'ESG-focused fund investing in companies with strong environmental, social, and governance practices.' },
-
-      // --- International from India ---
-      { id:'in-motilal-nasdaq', name:'Motilal Oswal Nasdaq 100 FOF', category:'International', market:'india', riskLevel:'high', minSIP:500, minLumpsum:500, expenseRatio:0.50, returns:{y1:22.5,y3:18.2,y5:21.5}, rating:5, fundSizeCr:5800, sectors:['technology','diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Invest in US Nasdaq 100 from India. Access to Apple, Google, Amazon, Meta etc.' },
-      { id:'in-pgim-global', name:'PGIM India Global Equity Opp', category:'International', market:'india', riskLevel:'high', minSIP:1000, minLumpsum:5000, expenseRatio:1.45, returns:{y1:16.8,y3:14.5,y5:17.2}, rating:4, fundSizeCr:2200, sectors:['technology','diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Global equity fund investing across US, Europe, and emerging markets.' },
-
-      // ===================== US MARKET =====================
-      // --- Large Cap / Index ---
-      { id:'us-vfiax', name:'Vanguard 500 Index (VFIAX)', category:'Large Cap Index', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.04, returns:{y1:18.5,y3:14.8,y5:15.2}, rating:5, fundSizeCr:null, fundSizeB:820, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Tracks the S&P 500 index. The gold standard of passive investing with rock-bottom fees.' },
-      { id:'us-fxaix', name:'Fidelity 500 Index (FXAIX)', category:'Large Cap Index', market:'us', riskLevel:'moderate', minSIP:0, minLumpsum:0, expenseRatio:0.015, returns:{y1:18.6,y3:14.9,y5:15.3}, rating:5, fundSizeCr:null, fundSizeB:510, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Zero minimum investment S&P 500 tracker. Lowest expense ratio in its class.' },
-      { id:'us-vtsax', name:'Vanguard Total Stock Market (VTSAX)', category:'Total Market', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.04, returns:{y1:17.8,y3:14.2,y5:14.8}, rating:5, fundSizeCr:null, fundSizeB:1400, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Total US stock market in one fund. Includes large, mid, and small-cap stocks.' },
-
-      // --- Growth ---
-      { id:'us-vigax', name:'Vanguard Growth Index (VIGAX)', category:'Large Cap Growth', market:'us', riskLevel:'high', minSIP:100, minLumpsum:3000, expenseRatio:0.05, returns:{y1:24.2,y3:18.5,y5:19.8}, rating:5, fundSizeCr:null, fundSizeB:220, sectors:['technology','diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Growth-focused large-cap fund. Heavy in tech and innovative companies.' },
-      { id:'us-fbgrx', name:'Fidelity Blue Chip Growth (FBGRX)', category:'Large Cap Growth', market:'us', riskLevel:'high', minSIP:0, minLumpsum:0, expenseRatio:0.48, returns:{y1:26.5,y3:20.1,y5:21.5}, rating:5, fundSizeCr:null, fundSizeB:55, sectors:['technology','diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Actively managed blue-chip growth fund. Tech-heavy with exceptional track record.' },
-
-      // --- Small Cap ---
-      { id:'us-vsmax', name:'Vanguard Small Cap Index (VSMAX)', category:'Small Cap', market:'us', riskLevel:'high', minSIP:100, minLumpsum:3000, expenseRatio:0.05, returns:{y1:16.2,y3:12.5,y5:13.8}, rating:4, fundSizeCr:null, fundSizeB:140, sectors:['diversified'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Broad US small-cap exposure at low cost. Higher growth potential than large caps.' },
-      { id:'us-trbcx', name:'T. Rowe Price Small-Cap Value (TRBCX)', category:'Small Cap Value', market:'us', riskLevel:'very-high', minSIP:0, minLumpsum:2500, expenseRatio:0.80, returns:{y1:14.8,y3:11.2,y5:12.5}, rating:4, fundSizeCr:null, fundSizeB:8, sectors:['diversified'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Value-oriented small-cap fund. Seeks undervalued small companies with turnaround potential.' },
-
-      // --- International ---
-      { id:'us-vtiax', name:'Vanguard Total International (VTIAX)', category:'International', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.12, returns:{y1:12.5,y3:8.8,y5:9.5}, rating:4, fundSizeCr:null, fundSizeB:450, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Non-US stock market in one fund. Global diversification across developed and emerging markets.' },
-      { id:'us-vwilx', name:'Vanguard International Growth (VWILX)', category:'International Growth', market:'us', riskLevel:'high', minSIP:100, minLumpsum:3000, expenseRatio:0.32, returns:{y1:15.8,y3:11.2,y5:12.5}, rating:4, fundSizeCr:null, fundSizeB:52, sectors:['diversified','technology'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'International growth stocks outside the US. Strong tech and consumer holdings globally.' },
-
-      // --- Bond / Fixed Income ---
-      { id:'us-vbtlx', name:'Vanguard Total Bond Market (VBTLX)', category:'Bond - Broad', market:'us', riskLevel:'low', minSIP:100, minLumpsum:3000, expenseRatio:0.05, returns:{y1:4.2,y3:3.5,y5:3.8}, rating:5, fundSizeCr:null, fundSizeB:320, sectors:['debt'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Total US bond market index. Core fixed-income holding with government and corporate bonds.' },
-      { id:'us-vwahx', name:'Vanguard High-Yield Corp Bond (VWAHX)', category:'Bond - High Yield', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.23, returns:{y1:6.8,y3:5.5,y5:5.8}, rating:4, fundSizeCr:null, fundSizeB:28, sectors:['debt'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['monthly','annual'], description:'High-yield corporate bonds. Higher income than investment-grade with moderate risk.' },
-      { id:'us-tips', name:'Vanguard Inflation-Protected (VAIPX)', category:'Bond - TIPS', market:'us', riskLevel:'low', minSIP:100, minLumpsum:3000, expenseRatio:0.10, returns:{y1:5.1,y3:4.2,y5:4.5}, rating:4, fundSizeCr:null, fundSizeB:42, sectors:['debt'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Treasury Inflation-Protected Securities. Shields your income from inflation.' },
-
-      // --- Balanced / Hybrid ---
-      { id:'us-vbiax', name:'Vanguard Balanced Index (VBIAX)', category:'Balanced', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.07, returns:{y1:12.5,y3:10.2,y5:11.0}, rating:5, fundSizeCr:null, fundSizeB:60, sectors:['diversified','debt'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'60/40 stock-bond split. Classic balanced portfolio in a single fund.' },
-      { id:'us-prwcx', name:'T. Rowe Price Capital Appr. (PRWCX)', category:'Balanced', market:'us', riskLevel:'moderate', minSIP:0, minLumpsum:2500, expenseRatio:0.70, returns:{y1:14.2,y3:11.8,y5:12.5}, rating:5, fundSizeCr:null, fundSizeB:32, sectors:['diversified','debt'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'Legendary balanced fund. Consistently strong risk-adjusted returns across all markets.' },
-
-      // --- Target Date ---
-      { id:'us-vffvx', name:'Vanguard Target Retirement 2055 (VFFVX)', category:'Target Date', market:'us', riskLevel:'high', minSIP:100, minLumpsum:1000, expenseRatio:0.08, returns:{y1:16.8,y3:13.5,y5:14.2}, rating:4, fundSizeCr:null, fundSizeB:45, sectors:['diversified','debt'], suitableFor:['beginner','intermediate'], bestMarket:['bullish','neutral'], returnType:['maturity'], description:'Set-it-and-forget-it retirement fund. Auto-adjusts risk as you approach retirement in 2055.' },
-
-      // --- Sector: Technology ---
-      { id:'us-fsptx', name:'Fidelity Select Technology (FSPTX)', category:'Sectoral - Technology', market:'us', riskLevel:'very-high', minSIP:0, minLumpsum:0, expenseRatio:0.68, returns:{y1:28.5,y3:22.1,y5:24.8}, rating:4, fundSizeCr:null, fundSizeB:14, sectors:['technology'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Pure technology sector fund. Concentrated in US tech giants and innovators.' },
-      { id:'us-qtec', name:'First Trust NASDAQ-100 Tech (QTEC)', category:'Sectoral - Technology', market:'us', riskLevel:'very-high', minSIP:0, minLumpsum:0, expenseRatio:0.57, returns:{y1:30.2,y3:24.5,y5:26.2}, rating:4, fundSizeCr:null, fundSizeB:5, sectors:['technology'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Equal-weighted Nasdaq 100 tech stocks. Less FAANG-heavy, more mid-cap tech exposure.' },
-
-      // --- Sector: Healthcare ---
-      { id:'us-vghcx', name:'Vanguard Health Care (VGHCX)', category:'Sectoral - Healthcare', market:'us', riskLevel:'high', minSIP:100, minLumpsum:3000, expenseRatio:0.31, returns:{y1:14.8,y3:11.5,y5:13.2}, rating:5, fundSizeCr:null, fundSizeB:48, sectors:['healthcare'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Diversified healthcare fund. Pharma, biotech, medical devices, and healthcare services.' },
-      { id:'us-fbiox', name:'Fidelity Select Biotechnology (FBIOX)', category:'Sectoral - Healthcare', market:'us', riskLevel:'very-high', minSIP:0, minLumpsum:0, expenseRatio:0.69, returns:{y1:18.2,y3:12.8,y5:14.5}, rating:4, fundSizeCr:null, fundSizeB:6, sectors:['healthcare'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['maturity'], description:'Concentrated biotech fund. High risk-reward with exposure to breakthrough therapies.' },
-
-      // --- Sector: Real Estate ---
-      { id:'us-vgslx', name:'Vanguard Real Estate Index (VGSLX)', category:'Sectoral - Real Estate', market:'us', riskLevel:'high', minSIP:100, minLumpsum:3000, expenseRatio:0.12, returns:{y1:10.5,y3:8.2,y5:9.8}, rating:4, fundSizeCr:null, fundSizeB:72, sectors:['realestate'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['monthly','annual'], description:'US REIT index fund. Real estate exposure with dividend income from property trusts.' },
-
-      // --- Sector: Energy ---
-      { id:'us-vgenx', name:'Vanguard Energy Fund (VGENX)', category:'Sectoral - Energy', market:'us', riskLevel:'very-high', minSIP:100, minLumpsum:3000, expenseRatio:0.30, returns:{y1:12.5,y3:15.8,y5:10.2}, rating:3, fundSizeCr:null, fundSizeB:8, sectors:['energy'], suitableFor:['experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'Traditional and renewable energy companies. Cyclical with commodity price sensitivity.' },
-      { id:'us-icln', name:'iShares Global Clean Energy (ICLN)', category:'Thematic - Clean Energy', market:'us', riskLevel:'very-high', minSIP:0, minLumpsum:0, expenseRatio:0.40, returns:{y1:8.5,y3:6.2,y5:11.5}, rating:3, fundSizeCr:null, fundSizeB:3, sectors:['energy','esg'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['maturity'], description:'Global clean energy stocks. Solar, wind, and other renewable energy companies.' },
-
-      // --- Sector: Financial ---
-      { id:'us-fidsx', name:'Fidelity Select Financial (FIDSX)', category:'Sectoral - Banking', market:'us', riskLevel:'high', minSIP:0, minLumpsum:0, expenseRatio:0.72, returns:{y1:16.8,y3:12.5,y5:14.2}, rating:4, fundSizeCr:null, fundSizeB:4, sectors:['banking'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'US financial services sector. Banks, insurance, fintech, and asset managers.' },
-
-      // --- Sector: Consumer ---
-      { id:'us-fdfax', name:'Fidelity Select Consumer Staples (FDFAX)', category:'Sectoral - Consumer', market:'us', riskLevel:'moderate', minSIP:0, minLumpsum:0, expenseRatio:0.72, returns:{y1:8.5,y3:7.2,y5:9.8}, rating:3, fundSizeCr:null, fundSizeB:2.5, sectors:['consumer'], suitableFor:['intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['annual','maturity'], description:'Consumer staples defensive fund. Procter & Gamble, Coca-Cola, Walmart — recession-resistant.' },
-
-      // --- Sector: Manufacturing/Industrial ---
-      { id:'us-fscgx', name:'Fidelity Select Industrials (FCYIX)', category:'Sectoral - Manufacturing', market:'us', riskLevel:'high', minSIP:0, minLumpsum:0, expenseRatio:0.71, returns:{y1:18.5,y3:14.2,y5:15.8}, rating:4, fundSizeCr:null, fundSizeB:3, sectors:['manufacturing'], suitableFor:['intermediate','experienced'], bestMarket:['bullish'], returnType:['annual','maturity'], description:'US industrial and manufacturing sector. Aerospace, defense, machinery, and transportation.' },
-
-      // --- ESG ---
-      { id:'us-prblx', name:'Parnassus Core Equity (PRBLX)', category:'ESG', market:'us', riskLevel:'moderate', minSIP:0, minLumpsum:2000, expenseRatio:0.82, returns:{y1:16.2,y3:13.5,y5:14.8}, rating:5, fundSizeCr:null, fundSizeB:28, sectors:['esg','diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Leading ESG large-cap fund. Avoids fossil fuels, weapons. Strong returns with clean conscience.' },
-      { id:'us-vftax', name:'Vanguard FTSE Social Index (VFTAX)', category:'ESG', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.14, returns:{y1:17.5,y3:14.0,y5:15.0}, rating:4, fundSizeCr:null, fundSizeB:15, sectors:['esg','diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral'], returnType:['annual','maturity'], description:'Low-cost ESG index fund. Screens out controversial industries while tracking the broad market.' },
-
-      // --- Income / Dividend ---
-      { id:'us-vdadx', name:'Vanguard Dividend Appreciation (VDADX)', category:'Dividend', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.08, returns:{y1:14.2,y3:12.1,y5:13.5}, rating:5, fundSizeCr:null, fundSizeB:85, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'Companies with 10+ years of dividend growth. Steady income with capital appreciation.' },
-      { id:'us-vhyax', name:'Vanguard High Dividend Yield (VHYAX)', category:'High Dividend', market:'us', riskLevel:'moderate', minSIP:100, minLumpsum:3000, expenseRatio:0.08, returns:{y1:12.5,y3:10.8,y5:11.5}, rating:4, fundSizeCr:null, fundSizeB:55, sectors:['diversified'], suitableFor:['beginner','intermediate','experienced'], bestMarket:['bullish','neutral','bearish'], returnType:['monthly','annual'], description:'High-yielding dividend stocks. Emphasis on income generation over capital growth.' }
-    ];
-
-    const RETURN_RANGES = {
-      conservative: { min: 4, max: 8, label: '6–8% p.a.' },
-      moderate:     { min: 8, max: 14, label: '8–14% p.a.' },
-      high:         { min: 14, max: 22, label: '14–20% p.a.' },
-      'very-high':  { min: 20, max: 50, label: '20%+ p.a.' }
-    };
-
-    const AMOUNT_RANGES = {
-      micro:  { inr: { min: 500, max: 5000 },   usd: { min: 50, max: 500 } },
-      small:  { inr: { min: 5000, max: 25000 },  usd: { min: 500, max: 2500 } },
-      medium: { inr: { min: 25000, max: 100000 }, usd: { min: 2500, max: 10000 } },
-      large:  { inr: { min: 100000, max: 500000 }, usd: { min: 10000, max: 50000 } },
-      xlarge: { inr: { min: 500000, max: 10000000 }, usd: { min: 50000, max: 1000000 } }
-    };
-
-    const RISK_MAP = {
-      low:       ['low'],
-      moderate:  ['low', 'moderate'],
-      high:      ['moderate', 'high'],
-      'very-high': ['high', 'very-high']
-    };
-
-    const SECTOR_NAMES = {
-      'no-preference': 'Diversified',
-      technology: 'Technology',
-      healthcare: 'Healthcare',
-      banking: 'Banking & Finance',
-      infrastructure: 'Infrastructure',
-      consumer: 'Consumer & FMCG',
-      manufacturing: 'Manufacturing',
-      realestate: 'Real Estate',
-      energy: 'Energy',
-      esg: 'ESG / Sustainable'
-    };
-
-    const TAX_RULES = {
-      india: {
-        'Large Cap':           { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'Mid Cap':             { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'Small Cap':           { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'Flexi Cap':           { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'Multi Cap':           { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'Index Fund':          { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'No tax deduction benefit' },
-        'ELSS':                { type:'Equity', stcg:'N/A (3-yr lock-in)', ltcg:'10% above ₹1L (held ≥ 3 yr)', note:'✅ Sec 80C deduction up to ₹1.5L', highlight: true },
-        'Debt':                { type:'Debt',   stcg:'As per income slab', ltcg:'As per income slab (no indexation)', note:'No indexation benefit post Apr 2023' },
-        'Govt Securities':     { type:'Debt',   stcg:'As per income slab', ltcg:'As per income slab', note:'Interest taxed at slab rate' },
-        'Aggressive Hybrid':   { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'Equity taxation (≥65% equity)' },
-        'Balanced Advantage':  { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'Equity taxation (dynamic allocation)' },
-        'Conservative Hybrid': { type:'Debt',   stcg:'As per income slab', ltcg:'As per income slab', note:'Debt taxation (<65% equity)' },
-        'International':       { type:'Debt',   stcg:'As per income slab', ltcg:'As per income slab', note:'Treated as debt fund for tax' },
-        'default':             { type:'Equity', stcg:'15% (held < 1 yr)', ltcg:'10% above ₹1L (held ≥ 1 yr)', note:'' }
-      },
-      us: {
-        'default': { type:'US Fund', stcg:'Ordinary income rate (held < 1 yr)', ltcg:'0% / 15% / 20% based on income (held ≥ 1 yr)', note:'Qualified dividends taxed at LTCG rate' }
-      }
-    };
-
-    function getTaxInfo(fund) {
-      const market = fund.market;
-      const rulesMap = TAX_RULES[market] || TAX_RULES.us;
-      let cat = fund.category;
-      if (rulesMap[cat]) return rulesMap[cat];
-      for (const key of Object.keys(rulesMap)) {
-        if (key !== 'default' && cat.startsWith(key)) return rulesMap[key];
-      }
-      if (cat.startsWith('Sectoral') || cat.startsWith('Thematic')) {
-        if (market === 'india') return rulesMap['Large Cap'];
-        return rulesMap['default'];
-      }
-      return rulesMap['default'] || TAX_RULES.us['default'];
+    // Parse "DD-MM-YYYY" from AMFI API into JS Date
+    function parseDMY(dateStr) {
+      if (!dateStr) return new Date(0);
+      const parts = dateStr.split('-');
+      if (parts.length !== 3) return new Date(dateStr);
+      return new Date(Number(parts[2]), Number(parts[1]) - 1, Number(parts[0]));
     }
 
-    function getExpenseRating(ratio) {
-      if (ratio <= 0.10) return { label: 'Ultra Low', color: '#22c55e', icon: '⭐' };
-      if (ratio <= 0.30) return { label: 'Very Low', color: '#22c55e', icon: '👍' };
-      if (ratio <= 0.60) return { label: 'Low', color: '#10b981', icon: '✓' };
-      if (ratio <= 1.00) return { label: 'Moderate', color: '#f59e0b', icon: '—' };
-      if (ratio <= 1.50) return { label: 'Average', color: '#f97316', icon: '⚠' };
-      return { label: 'High', color: '#ef4444', icon: '⚠' };
+    // Format Date to readable "14 Nov 2026"
+    function formatDateReadable(dateObj) {
+      if (!dateObj || isNaN(dateObj.getTime())) return 'Latest';
+      return dateObj.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
     }
 
-    /* ================================================
-       2. market.js — Market Sentiment Detector
-       ================================================ */
-    const MarketDetector = {
-      async detect(market = 'both') {
-        await new Promise(r => setTimeout(r, 700));
-        const indicators = [];
-        if (market === 'india' || market === 'both') {
-          indicators.push(
-            { label: 'NIFTY 50', value: '24,850.40', change: '+0.84%', positive: true },
-            { label: 'BSE SENSEX', value: '81,720.15', change: '+0.79%', positive: true }
-          );
+    /**
+     * Given a chronological or reverse-chronological price series:
+     * entries = [{ date: Date, value: Number }, ...] sorted NEWEST first (index 0 = latest)
+     * Computes 1Y, 3Y, 5Y CAGR, Annualized Volatility, 1Y Max Drawdown, and Sharpe Proxy.
+     */
+    function computeLiveQuantMetrics(seriesNewestFirst) {
+      if (!seriesNewestFirst || seriesNewestFirst.length < 15) return null;
+
+      const latest = seriesNewestFirst[0];
+      const latestVal = latest.value;
+      const latestDate = latest.date;
+
+      // Ensure scheme/instrument is currently active (not a dead scheme from years ago)
+      const now = new Date();
+      const daysSinceUpdate = (now - latestDate) / (1000 * 60 * 60 * 24);
+      if (daysSinceUpdate > 60) {
+        return null; // Reject inactive / matured / closed schemes automatically
+      }
+
+      // Helper to find entry closest to N years ago
+      function findPointYearsAgo(years) {
+        const targetTime = latestDate.getTime() - (years * 365.25 * 24 * 60 * 60 * 1000);
+        let best = null;
+        let minDiff = Infinity;
+        for (let i = 0; i < seriesNewestFirst.length; i++) {
+          const diff = Math.abs(seriesNewestFirst[i].date.getTime() - targetTime);
+          if (diff < minDiff) {
+            minDiff = diff;
+            best = seriesNewestFirst[i];
+          }
         }
-        if (market === 'us' || market === 'both') {
-          indicators.push(
-            { label: 'S&P 500', value: '5,985.20', change: '+0.62%', positive: true },
-            { label: 'NASDAQ 100', value: '20,890.50', change: '+0.95%', positive: true }
-          );
+        // Must be within 35 days of target date to count as valid N-year history
+        if (best && minDiff <= 35 * 24 * 60 * 60 * 1000) {
+          const exactYears = (latestDate.getTime() - best.date.getTime()) / (365.25 * 24 * 60 * 60 * 1000);
+          return { point: best, exactYears };
         }
-        return {
-          overallSentiment: 'bullish',
-          indicators
-        };
-      },
+        return null;
+      }
 
-      renderDetection(result) {
-        const body = document.getElementById('marketDetectBody');
-        if (!body) return;
+      function calcCAGR(years) {
+        const match = findPointYearsAgo(years);
+        if (!match || match.point.value <= 0 || match.exactYears <= 0.2) return null;
+        if (years === 1) {
+          return Number((((latestVal / match.point.value) - 1) * 100).toFixed(2));
+        }
+        const cagr = (Math.pow(latestVal / match.point.value, 1 / match.exactYears) - 1) * 100;
+        return Number(cagr.toFixed(2));
+      }
 
-        const indHTML = (result.indicators || []).map(ind => `
-          <div class="market-indicator">
-            <span class="indicator-label">${ind.label}</span>
-            <span class="indicator-value">${ind.value}</span>
-            <span class="indicator-change ${ind.positive ? 'positive' : 'negative'}">${ind.change}</span>
-          </div>
-        `).join('');
+      const r1mMatch = findPointYearsAgo(1 / 12);
+      const r6mMatch = findPointYearsAgo(0.5);
+      const r1y = calcCAGR(1);
+      const r3y = calcCAGR(3);
+      const r5y = calcCAGR(5);
 
-        const sentiment = result.overallSentiment || 'bullish';
-        const badgeIcon = sentiment === 'bullish' ? 'fa-arrow-trend-up' : sentiment === 'bearish' ? 'fa-arrow-trend-down' : 'fa-arrows-left-right';
-        const capSentiment = sentiment.charAt(0).toUpperCase() + sentiment.slice(1);
+      const r1m = r1mMatch && r1mMatch.point.value > 0
+        ? Number((((latestVal / r1mMatch.point.value) - 1) * 100).toFixed(2))
+        : null;
+      const r6m = r6mMatch && r6mMatch.point.value > 0
+        ? Number((((latestVal / r6mMatch.point.value) - 1) * 100).toFixed(2))
+        : null;
 
-        body.innerHTML = `
-          <div class="market-indicators">${indHTML}</div>
-          <div class="market-sentiment-badge ${sentiment}">
-            <i class="fas ${badgeIcon}"></i> Overall Sentiment: ${capSentiment}
-          </div>
-        `;
+      // Calculate 1-Year Annualized Volatility & Max Drawdown from up to 252 trading sessions
+      const slice1Y = seriesNewestFirst.slice(0, Math.min(252, seriesNewestFirst.length));
+      const dailyReturns = [];
+      let peak = slice1Y[slice1Y.length - 1].value;
+      let maxDrawdown = 0;
 
-        // Auto-select corresponding radio button if none chosen yet
-        const existing = document.querySelector('input[name="marketCondition"]:checked');
-        if (!existing) {
-          const radio = document.querySelector(`input[name="marketCondition"][value="${sentiment}"]`);
-          if (radio) radio.checked = true;
+      // Traverse oldest to newest for drawdown and daily returns
+      for (let i = slice1Y.length - 1; i >= 0; i--) {
+        const v = slice1Y[i].value;
+        if (v > peak) peak = v;
+        if (peak > 0) {
+          const dd = ((peak - v) / peak) * 100;
+          if (dd > maxDrawdown) maxDrawdown = dd;
+        }
+        if (i < slice1Y.length - 1) {
+          const prev = slice1Y[i + 1].value;
+          if (prev > 0) dailyReturns.push((v / prev) - 1);
         }
       }
-    };
 
-    /* ================================================
-       3. engine.js — Recommendation & Scoring Engine
-       ================================================ */
-    const RecommendationEngine = {
-      recommend(prefs) {
-        let pool = FUND_DATABASE.filter(fund => this.passesFilter(fund, prefs));
-        pool = pool.map(fund => ({
-          ...fund,
-          score: this.scoreFund(fund, prefs),
-          scoreBreakdown: this.getBreakdown(fund, prefs),
-          whyText: this.generateWhy(fund, prefs)
-        }));
-        pool.sort((a, b) => b.score - a.score);
-        return pool.slice(0, 8);
-      },
+      let volatility = 12.0;
+      if (dailyReturns.length > 10) {
+        const mean = dailyReturns.reduce((a, b) => a + b, 0) / dailyReturns.length;
+        const variance = dailyReturns.reduce((acc, val) => acc + Math.pow(val - mean, 2), 0) / (dailyReturns.length - 1);
+        volatility = Number((Math.sqrt(variance) * Math.sqrt(252) * 100).toFixed(2));
+      }
 
-      passesFilter(fund, prefs) {
-        if (prefs.market !== 'both') {
-          if (fund.market !== prefs.market) return false;
-        }
-        const amtRange = AMOUNT_RANGES[prefs.amount];
-        if (amtRange) {
-          const currency = fund.market === 'india' ? 'inr' : 'usd';
-          const userMax = amtRange[currency].max;
-          const minRequired = prefs.mode === 'lumpsum'
-            ? (fund.minLumpsum || 0)
-            : (fund.minSIP || 0);
-          if (minRequired > userMax) return false;
-        }
-        return true;
-      },
+      // Primary return metric (prefer 3Y CAGR, fallback to 1Y)
+      const primaryReturn = r3y !== null ? r3y : (r1y !== null ? r1y : (r6m || 10));
+      const riskFreeRate = 6.5;
+      const sharpe = volatility > 0.5 ? Number(((primaryReturn - riskFreeRate) / volatility).toFixed(2)) : 1.0;
 
-      scoreFund(fund, prefs) {
-        const weights = {
-          risk:     20,
-          returns:  20,
-          sector:   15,
-          market:   15,
-          investor: 10,
-          mode:      5,
-          rating:   10,
-          expense:   5
-        };
+      return {
+        latestNav: Number(latestVal.toFixed(4)),
+        latestDateStr: formatDateReadable(latestDate),
+        r1m,
+        r6m,
+        y1: r1y,
+        y3: r3y,
+        y5: r5y,
+        volatility,
+        maxDrawdown: Number(maxDrawdown.toFixed(2)),
+        sharpe,
+        historySeries: seriesNewestFirst.slice(0, 1260) // Up to 5 years for interactive charting
+      };
+    }
 
-        let total = 0;
-        total += this.scoreRisk(fund, prefs)            * weights.risk     / 100;
-        total += this.scoreReturns(fund, prefs)          * weights.returns  / 100;
-        total += this.scoreSector(fund, prefs)            * weights.sector   / 100;
-        total += this.scoreMarketCondition(fund, prefs)   * weights.market   / 100;
-        total += this.scoreInvestorType(fund, prefs)      * weights.investor / 100;
-        total += this.scoreMode(fund, prefs)              * weights.mode     / 100;
-        total += this.scoreRating(fund)                   * weights.rating   / 100;
-        total += this.scoreExpense(fund)                  * weights.expense  / 100;
+    /* ==========================================================================
+       3. LIVE API CONNECTORS (AMFI mfapi.in + Yahoo Finance Multi-Proxy)
+       ========================================================================== */
 
-        return Math.round(total * 10) / 10;
-      },
+    // Fetch single Indian Mutual Fund scheme from api.mfapi.in and compute live metrics
+    async function fetchIndianMFDetails(schemeCode) {
+      const codeKey = `IN_${schemeCode}`;
+      if (navCache.has(codeKey)) return navCache.get(codeKey);
 
-      scoreRisk(fund, prefs) {
-        const acceptableRisks = RISK_MAP[prefs.risk] || ['moderate'];
-        if (acceptableRisks.includes(fund.riskLevel)) return 100;
+      try {
+        const res = await fetch(`https://api.mfapi.in/mf/${schemeCode}`);
+        if (!res.ok) return null;
+        const json = await res.json();
+        if (!json || !json.data || json.data.length < 20) return null;
 
-        const riskOrder = ['low', 'moderate', 'high', 'very-high'];
-        const fundIdx  = riskOrder.indexOf(fund.riskLevel);
-        const prefIdx  = riskOrder.indexOf(prefs.risk);
-        const distance = Math.abs(fundIdx - prefIdx);
-        if (distance === 1) return 50;
-        if (distance === 2) return 20;
-        return 5;
-      },
-
-      scoreReturns(fund, prefs) {
-        const range = RETURN_RANGES[prefs.returns];
-        if (!range) return 50;
-
-        const fundReturn = fund.returns.y3;
-        if (fundReturn >= range.min && fundReturn <= range.max) return 100;
-        if (fundReturn > range.max) return 85;
-
-        const deficit = range.min - fundReturn;
-        if (deficit <= 2)  return 70;
-        if (deficit <= 5)  return 45;
-        return 20;
-      },
-
-      scoreSector(fund, prefs) {
-        const sectors = prefs.sectors || ['no-preference'];
-        if (sectors.includes('no-preference')) {
-          return fund.sectors.includes('diversified') ? 90 : 60;
-        }
-        const overlap = fund.sectors.filter(s => sectors.includes(s));
-        if (overlap.length > 0) return 100;
-        if (fund.sectors.includes('diversified')) return 55;
-        return 10;
-      },
-
-      scoreMarketCondition(fund, prefs) {
-        const condition = prefs.marketCondition || 'neutral';
-        if (fund.bestMarket.includes(condition)) return 100;
-        if (fund.bestMarket.length >= 3) return 80;
-        if (fund.bestMarket.includes('neutral')) return 50;
-        return 25;
-      },
-
-      scoreInvestorType(fund, prefs) {
-        if (fund.suitableFor.includes(prefs.investorType)) return 100;
-
-        const order  = ['beginner', 'intermediate', 'experienced'];
-        const fundBest = Math.min(...fund.suitableFor.map(s => order.indexOf(s)));
-        const userIdx  = order.indexOf(prefs.investorType);
-        if (Math.abs(fundBest - userIdx) === 1) return 60;
-        return 20;
-      },
-
-      scoreMode(fund, prefs) {
-        if (prefs.mode === 'both') return 90;
-        if (prefs.mode === 'sip')  return (fund.minSIP && fund.minSIP <= 1000) ? 100 : 70;
-        return 85;
-      },
-
-      scoreRating(fund) {
-        return (fund.rating / 5) * 100;
-      },
-
-      scoreExpense(fund) {
-        if (fund.expenseRatio <= 0.10) return 100;
-        if (fund.expenseRatio <= 0.30) return 90;
-        if (fund.expenseRatio <= 0.60) return 80;
-        if (fund.expenseRatio <= 1.00) return 65;
-        if (fund.expenseRatio <= 1.50) return 50;
-        return 35;
-      },
-
-      getBreakdown(fund, prefs) {
-        return {
-          'Risk Match':       this.scoreRisk(fund, prefs),
-          'Return Potential': this.scoreReturns(fund, prefs),
-          'Sector Fit':       this.scoreSector(fund, prefs),
-          'Market Timing':    this.scoreMarketCondition(fund, prefs),
-          'Investor Fit':     this.scoreInvestorType(fund, prefs),
-          'Fund Quality':     this.scoreRating(fund)
-        };
-      },
-
-      generateWhy(fund, prefs) {
-        const reasons = [];
-
-        const acceptableRisks = RISK_MAP[prefs.risk] || ['moderate'];
-        if (acceptableRisks.includes(fund.riskLevel)) {
-          reasons.push(`Matches your ${prefs.risk} risk profile perfectly`);
-        }
-
-        const range = RETURN_RANGES[prefs.returns];
-        if (range && fund.returns.y3 >= range.min) {
-          reasons.push(`3-year return of ${fund.returns.y3}% meets your ${range.label} target`);
-        }
-
-        const sectors = prefs.sectors || ['no-preference'];
-        if (!sectors.includes('no-preference')) {
-          const overlap = fund.sectors.filter(s => sectors.includes(s));
-          if (overlap.length > 0) {
-            reasons.push(`Direct exposure to ${overlap.map(s => SECTOR_NAMES[s] || s).join(', ')}`);
+        const series = [];
+        for (let i = 0; i < json.data.length; i++) {
+          const navNum = parseFloat(json.data[i].nav);
+          if (!isNaN(navNum) && navNum > 0) {
+            series.push({
+              date: parseDMY(json.data[i].date),
+              rawDate: json.data[i].date,
+              value: navNum
+            });
           }
         }
 
-        if (fund.bestMarket.includes(prefs.marketCondition)) {
-          reasons.push(`Well-suited for current ${prefs.marketCondition} market`);
-        }
-        if (fund.bestMarket.length >= 3) {
-          reasons.push('All-weather fund — performs across market cycles');
-        }
+        const metrics = computeLiveQuantMetrics(series);
+        if (!metrics) return null;
 
-        if (fund.suitableFor.includes(prefs.investorType)) {
-          reasons.push(`Ideal for ${prefs.investorType} investors`);
-        }
+        const meta = json.meta || {};
+        const cat = meta.scheme_category || 'Mutual Fund Scheme';
+        const name = meta.scheme_name || `Scheme ${schemeCode}`;
 
-        if (prefs.returnType && fund.returnType && fund.returnType.includes(prefs.returnType)) {
-          const typeLabels = { monthly: 'monthly income', annual: 'annual growth', maturity: 'long-term capital appreciation' };
-          reasons.push(`Supports ${typeLabels[prefs.returnType] || prefs.returnType}`);
-        }
-
-        if (fund.rating >= 5) reasons.push('Top-rated 5-star fund');
-        else if (fund.rating >= 4) reasons.push('Highly rated (4+ stars)');
-
-        if (fund.expenseRatio <= 0.20) reasons.push('Ultra-low expense ratio — more money works for you');
-        else if (fund.expenseRatio <= 0.50) reasons.push('Competitive expense ratio');
-
-        const taxInfo = getTaxInfo(fund);
-        if (taxInfo.highlight) reasons.push('Tax saving benefit under Section 80C');
-
-        if (prefs.mode === 'sip' && fund.minSIP <= 500) {
-          const sym = fund.market === 'india' ? '₹' : '$';
-          reasons.push(`Low minimum SIP of ${sym}${fund.minSIP}`);
+        // Determine empirical risk grade from live volatility & category
+        let riskLevel = 'moderate';
+        const catLower = (cat + ' ' + name).toLowerCase();
+        if (catLower.includes('liquid') || catLower.includes('overnight') || catLower.includes('corporate bond') || catLower.includes('gilt') || catLower.includes('short duration') || metrics.volatility < 5.5) {
+          riskLevel = 'low';
+        } else if (catLower.includes('small cap') || metrics.volatility > 18.0) {
+          riskLevel = 'very-high';
+        } else if (catLower.includes('mid cap') || catLower.includes('sectoral') || catLower.includes('thematic') || catLower.includes('multi cap') || metrics.volatility > 14.0) {
+          riskLevel = 'high';
         }
 
-        return reasons.slice(0, 4).join('. ') + '.';
-      },
+        const instrument = {
+          id: codeKey,
+          code: String(meta.scheme_code || schemeCode),
+          isin: meta.isin_growth || 'AMFI Verified',
+          name: name,
+          fundHouse: meta.fund_house || 'AMFI Registered AMC',
+          category: cat,
+          market: 'india',
+          assetType: 'Indian Mutual Fund',
+          currencySymbol: '₹',
+          riskLevel,
+          ...metrics
+        };
 
-      generateTags(fund, prefs) {
-        const tags = [];
-
-        const acceptableRisks = RISK_MAP[prefs.risk] || ['moderate'];
-        if (acceptableRisks.includes(fund.riskLevel))
-          tags.push({ text: '✓ Risk Match',   type: 'match' });
-
-        const range = RETURN_RANGES[prefs.returns];
-        if (range && fund.returns.y3 >= range.min)
-          tags.push({ text: '✓ Meets Return Target', type: 'match' });
-
-        const sectors = prefs.sectors || ['no-preference'];
-        if (!sectors.includes('no-preference')) {
-          const overlap = fund.sectors.filter(s => sectors.includes(s));
-          if (overlap.length > 0)
-            tags.push({ text: '✓ Sector Match', type: 'match' });
-        }
-
-        if (fund.bestMarket.includes(prefs.marketCondition))
-          tags.push({ text: '✓ Market Fit', type: 'match' });
-
-        if (fund.rating >= 4)
-          tags.push({ text: `★ ${fund.rating}/5 Rated`, type: 'info' });
-
-        if (fund.expenseRatio <= 0.30)
-          tags.push({ text: 'Low Cost', type: 'info' });
-
-        if (fund.bestMarket.length >= 3)
-          tags.push({ text: 'All-Weather', type: 'info' });
-
-        const taxInfo = getTaxInfo(fund);
-        if (taxInfo.highlight)
-          tags.push({ text: '✓ Tax Saving (80C)', type: 'match' });
-
-        if (fund.riskLevel === 'very-high')
-          tags.push({ text: '⚠ Very High Risk', type: 'warn' });
-
-        return tags;
-      }
-    };
-
-    /* ================================================
-       4. app.js — Main Application Logic
-       ================================================ */
-    const TOTAL_STEPS = 8;
-    let currentStep = 1;
-    let userPrefs = {};
-    let marketResult = null;
-
-    const STEP_LABELS = ['Market', 'Risk', 'Amount', 'Returns', 'Mode', 'Investor', 'Sector', 'Conditions'];
-
-    function startAdvisor() {
-      document.getElementById('hero').classList.add('hidden');
-      document.getElementById('advisor').classList.remove('hidden');
-      document.getElementById('results').classList.add('hidden');
-      currentStep = 1;
-      userPrefs = {};
-      marketResult = null;
-      renderProgress();
-      showStep(1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function startOver() {
-      startAdvisor();
-    }
-
-    function backToAdvisor() {
-      document.getElementById('results').classList.add('hidden');
-      document.getElementById('advisor').classList.remove('hidden');
-      showStep(TOTAL_STEPS);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function showStep(step) {
-      document.querySelectorAll('.wizard-step').forEach(el => el.classList.add('hidden'));
-      const target = document.querySelector(`.wizard-step[data-step="${step}"]`);
-      if (target) {
-        target.classList.remove('hidden');
-        target.style.animation = 'none';
-        target.offsetHeight;
-        target.style.animation = 'fadeInUp 0.4s ease';
-      }
-
-      currentStep = step;
-      updateNav();
-      renderProgress();
-
-      if (step === 8 && !marketResult) {
-        detectMarket();
+        navCache.set(codeKey, instrument);
+        activeInstrumentStore.set(instrument.id, instrument);
+        return instrument;
+      } catch (err) {
+        return null;
       }
     }
 
-    function nextStep() {
-      if (!validateStep(currentStep)) {
-        shakeButton();
-        return;
-      }
-      saveStepData(currentStep);
-
-      if (currentStep === TOTAL_STEPS) {
-        showResults();
-        return;
-      }
-
-      showStep(currentStep + 1);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function prevStep() {
-      if (currentStep > 1) {
-        showStep(currentStep - 1);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-
-    function updateNav() {
-      const btnPrev = document.getElementById('btnPrev');
-      const btnNext = document.getElementById('btnNext');
-
-      btnPrev.disabled = currentStep === 1;
-
-      if (currentStep === TOTAL_STEPS) {
-        btnNext.innerHTML = '<i class="fas fa-search"></i> Get Recommendations';
-      } else {
-        btnNext.innerHTML = 'Next <i class="fas fa-arrow-right"></i>';
-      }
-    }
-
-    function shakeButton() {
-      const btn = document.getElementById('btnNext');
-      btn.style.animation = 'none';
-      btn.offsetHeight;
-      btn.style.animation = 'shake 0.4s ease';
-      setTimeout(() => { btn.style.animation = ''; }, 400);
-    }
-
-    function renderProgress() {
-      const fill = document.getElementById('progressFill');
-      if (fill) fill.style.width = `${(currentStep / TOTAL_STEPS) * 100}%`;
-
-      const stepsContainer = document.getElementById('progressSteps');
-      if (stepsContainer) {
-        stepsContainer.innerHTML = STEP_LABELS.map((label, i) => {
-          const stepNum = i + 1;
-          let cls = 'progress-step';
-          if (stepNum < currentStep) cls += ' completed';
-          if (stepNum === currentStep) cls += ' active';
-          return `<div class="${cls}"><span class="progress-step-dot"></span><span>${label}</span></div>`;
-        }).join('');
-      }
-    }
-
-    function validateStep(step) {
-      switch (step) {
-        case 1: return !!document.querySelector('input[name="market"]:checked');
-        case 2: return !!document.querySelector('input[name="risk"]:checked');
-        case 3: return !!document.querySelector('input[name="amount"]:checked');
-        case 4:
-          return !!document.querySelector('input[name="returns"]:checked') &&
-                 !!document.querySelector('input[name="returnType"]:checked');
-        case 5: return !!document.querySelector('input[name="mode"]:checked');
-        case 6: return !!document.querySelector('input[name="investorType"]:checked');
-        case 7: return document.querySelectorAll('input[name="sector"]:checked').length > 0;
-        case 8: return !!document.querySelector('input[name="marketCondition"]:checked');
-        default: return true;
-      }
-    }
-
-    function saveStepData(step) {
-      switch (step) {
-        case 1: userPrefs.market = document.querySelector('input[name="market"]:checked').value; break;
-        case 2: userPrefs.risk = document.querySelector('input[name="risk"]:checked').value; break;
-        case 3: userPrefs.amount = document.querySelector('input[name="amount"]:checked').value; break;
-        case 4:
-          userPrefs.returns = document.querySelector('input[name="returns"]:checked').value;
-          userPrefs.returnType = document.querySelector('input[name="returnType"]:checked').value;
-          break;
-        case 5: userPrefs.mode = document.querySelector('input[name="mode"]:checked').value; break;
-        case 6: userPrefs.investorType = document.querySelector('input[name="investorType"]:checked').value; break;
-        case 7:
-          userPrefs.sectors = Array.from(document.querySelectorAll('input[name="sector"]:checked')).map(c => c.value);
-          break;
-        case 8: userPrefs.marketCondition = document.querySelector('input[name="marketCondition"]:checked').value; break;
-      }
-    }
-
-    function switchCurrency(currency) {
-      document.querySelectorAll('.amount-toggle .toggle-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.currency === currency);
-      });
-      document.querySelectorAll('.amount-label').forEach(label => {
-        label.textContent = label.dataset[currency] || label.dataset.inr;
-      });
-    }
-
-    document.addEventListener('change', function(e) {
-      if (e.target.name !== 'sector') return;
-
-      if (e.target.value === 'no-preference' && e.target.checked) {
-        document.querySelectorAll('input[name="sector"]').forEach(cb => {
-          if (cb.value !== 'no-preference') cb.checked = false;
-        });
-      } else if (e.target.value !== 'no-preference' && e.target.checked) {
-        const noPref = document.querySelector('input[name="sector"][value="no-preference"]');
-        if (noPref) noPref.checked = false;
-      }
-    });
-
-    async function detectMarket() {
-      const market = userPrefs.market || 'both';
+    // Search Indian Mutual Funds live via api.mfapi.in/mf/search?q=
+    async function searchIndianMFsLive(query, preferDirectGrowth = true, maxItems = 7) {
       try {
-        marketResult = await MarketDetector.detect(market);
-        MarketDetector.renderDetection(marketResult);
+        const res = await fetch(`https://api.mfapi.in/mf/search?q=${encodeURIComponent(query)}`);
+        if (!res.ok) return [];
+        const list = await res.json();
+        if (!Array.isArray(list) || list.length === 0) return [];
+
+        // Prioritize Direct Growth plans and filter out IDCW / Bonus / Segregated clutter
+        const filtered = list.filter(item => {
+          const n = (item.schemeName || '').toLowerCase();
+          if (n.includes('idcw') || n.includes('dividend') || n.includes('bonus') || n.includes('segregated') || n.includes('fmp') || n.includes('fixed maturity')) {
+            return false;
+          }
+          if (preferDirectGrowth) {
+            return n.includes('direct') && n.includes('growth');
+          }
+          return n.includes('growth');
+        });
+
+        const pool = (filtered.length > 0 ? filtered : list).slice(0, maxItems * 2);
+        const fetched = await Promise.all(pool.slice(0, maxItems + 3).map(item => fetchIndianMFDetails(item.schemeCode)));
+        return fetched.filter(Boolean).slice(0, maxItems);
       } catch (e) {
-        console.warn('Market detection failed, using defaults', e);
-        marketResult = { overallSentiment: 'neutral' };
-        const body = document.getElementById('marketDetectBody');
-        if (body) body.innerHTML = '<p style="color:var(--text-secondary)">Could not fetch live data. Please select manually below.</p>';
+        return [];
       }
     }
 
-    function showResults() {
-      saveStepData(currentStep);
-
-      document.getElementById('advisor').classList.add('hidden');
-      document.getElementById('results').classList.remove('hidden');
-      document.getElementById('resultsGrid').innerHTML = '';
-      document.getElementById('resultsLoading').classList.remove('hidden');
-
-      renderProfileSummary();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-
-      const statuses = [
-        'Filtering fund universe...',
-        'Evaluating risk profiles...',
-        'Analyzing return patterns...',
-        'Checking market conditions...',
-        'Scoring & ranking funds...',
-        'Preparing recommendations...'
+    // Resilient CORS Fetcher for Global Stocks, ETFs & US Mutual Funds (Yahoo Finance v1/v8)
+    async function fetchWithCorsFallback(targetUrl) {
+      const proxies = [
+        url => `https://corsproxy.io/?${encodeURIComponent(url)}`,
+        url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`
       ];
-
-      let idx = 0;
-      const statusEl = document.getElementById('analysisStatus');
-      const interval = setInterval(() => {
-        idx++;
-        if (idx < statuses.length) {
-          statusEl.textContent = statuses[idx];
+      for (const buildProxy of proxies) {
+        try {
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 5500);
+          const res = await fetch(buildProxy(targetUrl), { signal: controller.signal });
+          clearTimeout(timer);
+          if (res.ok) {
+            return await res.json();
+          }
+        } catch (err) {
+          // Try next proxy
         }
-      }, 350);
-
-      setTimeout(() => {
-        clearInterval(interval);
-        const recommendations = RecommendationEngine.recommend(userPrefs);
-        document.getElementById('resultsLoading').classList.add('hidden');
-
-        if (recommendations.length === 0) {
-          document.getElementById('resultsGrid').innerHTML = `
-            <div style="text-align:center;padding:3rem;color:var(--text-secondary)">
-              <i class="fas fa-search" style="font-size:3rem;margin-bottom:1rem;display:block;color:var(--text-muted)"></i>
-              <h3>No exact matches found</h3>
-              <p>Try adjusting your preferences — perhaps a different risk level or broader sector selection.</p>
-            </div>`;
-          return;
-        }
-
-        document.getElementById('resultsSummary').textContent =
-          `Found ${recommendations.length} funds matching your profile — ranked by compatibility score.`;
-        renderResults(recommendations);
-      }, 2200);
+      }
+      return null;
     }
 
-    function renderProfileSummary() {
-      const el = document.getElementById('profileSummary');
-      const tags = [
-        { icon: 'fa-globe', text: userPrefs.market === 'both' ? 'India + US' : userPrefs.market === 'india' ? 'Indian Market' : 'US Market' },
-        { icon: 'fa-shield-alt', text: `${capitalize(userPrefs.risk)} Risk` },
-        { icon: 'fa-wallet', text: getAmountLabel(userPrefs.amount) },
-        { icon: 'fa-percentage', text: RETURN_RANGES[userPrefs.returns]?.label || userPrefs.returns },
-        { icon: 'fa-calendar-alt', text: capitalize(userPrefs.returnType) + ' Returns' },
-        { icon: 'fa-sync-alt', text: userPrefs.mode === 'sip' ? 'SIP' : userPrefs.mode === 'lumpsum' ? 'Lumpsum' : 'SIP + Lumpsum' },
-        { icon: 'fa-user', text: capitalize(userPrefs.investorType) },
-        { icon: 'fa-chart-line', text: capitalize(userPrefs.marketCondition) + ' Market' }
+    // Fetch single Global/US/NSE Stock, ETF, or Fund via Yahoo Finance v8 Chart API
+    async function fetchGlobalSymbolDetails(symbol, labelName, categoryHint) {
+      const symKey = `GL_${symbol.toUpperCase()}`;
+      if (navCache.has(symKey)) return navCache.get(symKey);
+
+      const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=5y&interval=1d`;
+      const json = await fetchWithCorsFallback(url);
+      if (!json || !json.chart || !json.chart.result || !json.chart.result[0]) return null;
+
+      const res = json.chart.result[0];
+      const meta = res.meta || {};
+      const timestamps = res.timestamp || [];
+      const closes = (res.indicators && res.indicators.quote && res.indicators.quote[0] && res.indicators.quote[0].close) || [];
+
+      if (timestamps.length < 15) return null;
+
+      // Build series newest-first
+      const series = [];
+      for (let i = timestamps.length - 1; i >= 0; i--) {
+        const c = closes[i];
+        if (c !== null && c !== undefined && !isNaN(c) && c > 0) {
+          series.push({
+            date: new Date(timestamps[i] * 1000),
+            value: Number(c)
+          });
+        }
+      }
+
+      const metrics = computeLiveQuantMetrics(series);
+      if (!metrics) return null;
+
+      const isIndia = symbol.endsWith('.NS') || symbol.endsWith('.BO') || meta.currency === 'INR';
+      let riskLevel = 'moderate';
+      if (metrics.volatility < 7) riskLevel = 'low';
+      else if (metrics.volatility > 22) riskLevel = 'very-high';
+      else if (metrics.volatility > 15) riskLevel = 'high';
+
+      const instrument = {
+        id: symKey,
+        code: symbol.toUpperCase(),
+        isin: meta.exchangeName || 'Global Exchange',
+        name: labelName || meta.longName || meta.shortName || symbol.toUpperCase(),
+        fundHouse: meta.exchangeName || (isIndia ? 'NSE / BSE India' : 'US / Global Market'),
+        category: categoryHint || meta.instrumentType || 'Equity / ETF',
+        market: isIndia ? 'india' : 'us',
+        assetType: meta.instrumentType === 'ETF' ? 'Exchange Traded Fund (ETF)' : (meta.instrumentType === 'MUTUALFUND' ? 'US Mutual Fund' : 'Listed Equity / Index'),
+        currencySymbol: meta.currency === 'INR' ? '₹' : '$',
+        riskLevel,
+        ...metrics
+      };
+
+      navCache.set(symKey, instrument);
+      activeInstrumentStore.set(instrument.id, instrument);
+      return instrument;
+    }
+
+    // Search Global / Indian Stocks, ETFs & US Mutual Funds via Yahoo Finance Search API
+    async function searchGlobalEquitiesLive(query, maxItems = 5) {
+      const searchUrl = `https://query1.finance.yahoo.com/v1/finance/search?q=${encodeURIComponent(query)}"esCount=${maxItems + 3}&newsCount=0`;
+      const data = await fetchWithCorsFallback(searchUrl);
+
+      if (!data || !Array.isArray(data.quotes) || data.quotes.length === 0) {
+        // Direct ticker fallback if user typed a known ticker symbol
+        const direct = await fetchGlobalSymbolDetails(query.trim().toUpperCase());
+        return direct ? [direct] : [];
+      }
+
+      const validQuotes = data.quotes.filter(q => q.symbol && (q.quoteType === 'EQUITY' || q.quoteType === 'ETF' || q.quoteType === 'MUTUALFUND' || q.quoteType === 'INDEX')).slice(0, maxItems);
+      const results = await Promise.all(validQuotes.map(q =>
+        fetchGlobalSymbolDetails(q.symbol, q.longname || q.shortname || q.symbol, `${q.quoteType} · ${q.exchDisp || q.exchange || ''}`)
+      ));
+      return results.filter(Boolean);
+    }
+
+    /* ==========================================================================
+       4. LIVE BENCHMARK TICKER & MARKET SENTIMENT DETECTOR
+       ========================================================================== */
+    async function initLiveBenchmarkTicker() {
+      // Uses real AMFI Index/FoF schemes that track Nifty 50, Sensex, Nasdaq 100, and Gold in real time
+      // (100% CORS-native and guaranteed available on any browser network)
+      const benchmarkSeeds = [
+        { code: 120716, label: 'NIFTY 50 (UTI Index)' },
+        { code: 119065, label: 'BSE SENSEX (HDFC Index)' },
+        { code: 145552, label: 'NASDAQ 100 (Motilal FOF)' },
+        { code: 119788, label: 'SBI GOLD FUND' }
       ];
 
-      const sectorTags = (userPrefs.sectors || []).map(s => ({
-        icon: 'fa-tag',
-        text: SECTOR_NAMES[s] || s
+      const loaded = await Promise.all(benchmarkSeeds.map(async b => {
+        const inst = await fetchIndianMFDetails(b.code);
+        return inst ? { ...inst, benchmarkLabel: b.label } : null;
       }));
 
-      el.innerHTML = [...tags, ...sectorTags].map(t =>
-        `<span class="profile-tag"><i class="fas ${t.icon}"></i> ${t.text}</span>`
-      ).join('');
+      liveBenchmarks = loaded.filter(Boolean);
+      const strip = document.getElementById('liveTickerStrip');
+      if (liveBenchmarks.length > 0 && strip) {
+        strip.innerHTML = liveBenchmarks.map(b => {
+          const chg = b.r1m !== null ? b.r1m : (b.y1 || 0);
+          const isUp = chg >= 0;
+          return `
+            <span class="ticker-item" style="cursor:pointer" onclick="openResearchModal('${b.id}')">
+              <span class="ticker-name">${b.benchmarkLabel}:</span>
+              <span class="ticker-val">₹${b.latestNav}</span>
+              <span class="ticker-chg ${isUp ? 'up' : 'down'}">${isUp ? '▲ +' : '▼ '}${chg}% (1M)</span>
+              <span style="font-size:0.68rem;color:var(--ink-muted)">(${b.latestDateStr})</span>
+            </span>
+          `;
+        }).join('');
+
+        // Compute overall market sentiment from live 1M and 6M index trend
+        const avg1M = liveBenchmarks.reduce((s, x) => s + (x.r1m || 0), 0) / liveBenchmarks.length;
+        const avg1Y = liveBenchmarks.reduce((s, x) => s + (x.y1 || 0), 0) / liveBenchmarks.length;
+        if (avg1M > 1.0 && avg1Y > 8) detectedSentiment = 'bullish';
+        else if (avg1M < -2.0 || avg1Y < 0) detectedSentiment = 'bearish';
+        else detectedSentiment = 'neutral';
+      }
     }
 
-    function renderResults(funds) {
-      const grid = document.getElementById('resultsGrid');
-
-      grid.innerHTML = funds.map((fund, idx) => {
-        const rank = idx + 1;
-        const rankClass = rank <= 3 ? `rank-${rank}` : 'rank-other';
-        const tags = RecommendationEngine.generateTags(fund, userPrefs);
-        const taxInfo = getTaxInfo(fund);
-        const expRating = getExpenseRating(fund.expenseRatio);
-        const marketBadge = fund.market === 'india'
-          ? '<span class="fund-market-badge india">🇮🇳 India</span>'
-          : '<span class="fund-market-badge us">🇺🇸 US</span>';
-
-        let fundSize = '—';
-        if (fund.fundSizeCr) fundSize = '₹' + (fund.fundSizeCr >= 1000 ? (fund.fundSizeCr/1000).toFixed(0) + 'K Cr' : fund.fundSizeCr + ' Cr');
-        else if (fund.fundSizeB) fundSize = '$' + fund.fundSizeB + 'B';
-
-        const stars = Array.from({length: 5}, (_, i) =>
-          `<span class="star ${i < fund.rating ? '' : 'empty'}">★</span>`
-        ).join('');
-
-        const breakdownHTML = Object.entries(fund.scoreBreakdown).map(([label, val]) =>
-          `<div class="score-bar-item">
-            <span class="score-bar-label">${label}</span>
-            <div class="score-bar-track"><div class="score-bar-fill" style="width:${val}%"></div></div>
-            <span class="score-bar-value">${val}%</span>
-          </div>`
-        ).join('');
-
-        const tagsHTML = tags.map(t => `<span class="fund-tag ${t.type}">${t.text}</span>`).join('');
-
-        const taxHighlight = taxInfo.highlight ? 'tax-highlight' : '';
-        const taxHTML = `
-          <div class="tax-info ${taxHighlight}">
-            <div class="tax-header"><i class="fas fa-receipt"></i> Tax & Expense</div>
-            <div class="tax-grid">
-              <div class="tax-item">
-                <span class="tax-label">Expense Ratio</span>
-                <span class="tax-value" style="color:${expRating.color}">${fund.expenseRatio}% <small>(${expRating.label})</small></span>
-              </div>
-              <div class="tax-item">
-                <span class="tax-label">STCG Tax</span>
-                <span class="tax-value">${taxInfo.stcg}</span>
-              </div>
-              <div class="tax-item">
-                <span class="tax-label">LTCG Tax</span>
-                <span class="tax-value">${taxInfo.ltcg}</span>
-              </div>
-              <div class="tax-item">
-                <span class="tax-label">Note</span>
-                <span class="tax-value tax-note">${taxInfo.note || '—'}</span>
-              </div>
-            </div>
-          </div>`;
-
-        return `
-        <div class="fund-card" style="animation-delay:${idx * 0.1}s">
-          <div class="fund-card-header">
-            <div class="fund-rank">
-              <div class="rank-badge ${rankClass}">${rank}</div>
-              <div class="fund-info">
-                <h3>${fund.name} ${marketBadge}</h3>
-                <span class="fund-category">${fund.category}  ·  <span class="star-rating">${stars}</span></span>
-              </div>
-            </div>
-            <div class="fund-score-container">
-              <div class="fund-score">${fund.score}</div>
-              <div class="fund-score-label">Match Score</div>
-            </div>
+    function renderWizardMarketSentiment() {
+      const box = document.getElementById('wizardMarketMetrics');
+      if (!box) return;
+      if (liveBenchmarks.length === 0) {
+        box.innerHTML = `<span>Live sentiment detected: <strong>${detectedSentiment.toUpperCase()}</strong></span>`;
+        return;
+      }
+      box.innerHTML = liveBenchmarks.map(b => `
+        <div style="background:rgba(255,255,255,0.8);padding:0.75rem 1rem;border-radius:12px;">
+          <div style="font-size:0.72rem;font-weight:700;color:var(--ink-muted)">${b.benchmarkLabel}</div>
+          <div class="mono" style="font-size:1rem;font-weight:800;color:var(--ink-primary)">NAV ₹${b.latestNav}</div>
+          <div class="mono" style="font-size:0.78rem;font-weight:700;color:${(b.y1 || 0) >= 0 ? 'var(--positive)' : 'var(--negative)'}">
+            1Y: ${(b.y1 || 0) >= 0 ? '+' : ''}${b.y1 ?? '—'}% · 1M: ${(b.r1m || 0) >= 0 ? '+' : ''}${b.r1m ?? '—'}%
           </div>
+        </div>
+      `).join('');
 
-          <div class="fund-card-body">
-            <div class="fund-metrics">
-              <div class="metric">
-                <span class="metric-label">1Y Return</span>
-                <span class="metric-value ${fund.returns.y1 >= 0 ? 'positive' : 'negative'}">${fund.returns.y1 >= 0 ? '+' : ''}${fund.returns.y1}%</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">3Y Return</span>
-                <span class="metric-value ${fund.returns.y3 >= 0 ? 'positive' : 'negative'}">${fund.returns.y3 >= 0 ? '+' : ''}${fund.returns.y3}%</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">5Y Return</span>
-                <span class="metric-value ${fund.returns.y5 >= 0 ? 'positive' : 'negative'}">${fund.returns.y5 >= 0 ? '+' : ''}${fund.returns.y5}%</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Expense Ratio</span>
-                <span class="metric-value" style="color:${expRating.color}">${fund.expenseRatio}%</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Fund Size</span>
-                <span class="metric-value">${fundSize}</span>
-              </div>
-              <div class="metric">
-                <span class="metric-label">Min ${userPrefs.mode === 'lumpsum' ? 'Lumpsum' : 'SIP'}</span>
-                <span class="metric-value">${fund.market === 'india' ? '₹' : '$'}${userPrefs.mode === 'lumpsum' ? fund.minLumpsum : fund.minSIP}</span>
-              </div>
-            </div>
-          </div>
-
-          ${taxHTML}
-
-          <div class="score-breakdown">
-            <div class="score-bars">${breakdownHTML}</div>
-          </div>
-
-          <div class="fund-card-footer">
-            <div class="fund-tags">${tagsHTML}</div>
-            <div class="fund-why">
-              <div class="fund-why-title"><i class="fas fa-lightbulb"></i> Why This Fund?</div>
-              <p>${fund.whyText}</p>
-            </div>
-          </div>
-        </div>`;
-      }).join('');
-
-      document.querySelectorAll('.fund-card').forEach((card, i) => {
-        card.style.animationDelay = `${i * 0.12}s`;
-      });
+      const radio = document.querySelector(`input[name="marketCondition"][value="${detectedSentiment}"]`);
+      if (radio) radio.checked = true;
     }
 
-    function capitalize(str) {
-      if (!str) return '';
-      return str.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    }
-
-    function getAmountLabel(amount) {
-      const labels = {
-        micro: '₹500–5K / $50–500',
-        small: '₹5K–25K / $500–2.5K',
-        medium: '₹25K–1L / $2.5K–10K',
-        large: '₹1L–5L / $10K–50K',
-        xlarge: '₹5L+ / $50K+'
-      };
-      return labels[amount] || amount;
-    }
-
-    renderProgress();
   </script>
 </body>
 </html>
